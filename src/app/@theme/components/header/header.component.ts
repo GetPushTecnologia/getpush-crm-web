@@ -33,15 +33,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {
       value: 'corporate',
       name: 'Corporate',
-    },
-    {
-      value: 'material-dark',
-      name: 'Material Dark'
-    },
-    {
-      value: 'material-light',
-      name: 'Material Ligth'
-    }
+    }    
   ];
 
   currentTheme = 'default';
