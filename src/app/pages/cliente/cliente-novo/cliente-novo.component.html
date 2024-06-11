@@ -1,1 +1,58 @@
-<p>cliente-novo works!</p>
+<div class="row">
+    <div class="col-lg-6">
+        <nb-card>
+            <nb-card-header>Tipo Pessoa</nb-card-header>
+            <nb-card-body>
+                <nb-select selected="0" [(ngModel)]="tipoPessoa">
+                    <nb-option value="0" >Selecione</nb-option>
+                    <nb-option value="F">Física</nb-option>
+                    <nb-option value="J">Jurídico</nb-option>
+                  </nb-select>
+            </nb-card-body>
+        </nb-card>
+
+        <nb-card *ngIf="tipoPessoa">
+            <nb-card-header>Dados Cliente {{ tipoPessoa === 'F' ? 'Física' : 'Jurídico'  }} </nb-card-header>
+            <nb-card-body>
+                <!-- Fisico -->
+                <div *ngIf="tipoPessoa === 'F'">
+                    <div class="form-group">
+                        <label for="inputNome" class="label">Nome</label>
+                        <input type="text" nbInput fullWidth id="inputNome" placeholder="Nome">
+                    </div>
+                     
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="inputCpf" class="label">CPF</label>
+                            <input type="text" nbInput fullWidth id="inputCpf" placeholder="CPF">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="inputIdade" class="label">Idade</label>
+                            <input type="text" nbInput fullWidth id="inputIdade" placeholder="Idade">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juridico -->
+                <div *ngIf="tipoPessoa === 'J'">
+                    <div class="form-group">
+                        <label for="inputRazaoSocial" class="label">RazaoSocial</label>
+                        <input type="text" nbInput fullWidth id="inputRazaoSocial" placeholder="RazaoSocial">
+                    </div>
+                     
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="inputCNPJ" class="label">CNPJ</label>
+                            <input type="text" nbInput fullWidth id="inputCNPJ" placeholder="CNPJ">
+                        </div>
+                       
+                    </div>
+                </div>
+                
+                
+               
+            </nb-card-body>
+        </nb-card>
+
+    </div>
+</div>
