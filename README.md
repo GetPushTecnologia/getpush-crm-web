@@ -97,4 +97,4 @@ Visit [our homepage](https://www.akveo.com?utm_campaign=services%20-%20akveo%20w
 
 ## Desenvolvido por
 
-GetPusg Tecnologia
+GetPush Tecnologia
