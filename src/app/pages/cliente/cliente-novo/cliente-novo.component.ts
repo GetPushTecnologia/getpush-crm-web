@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteNovoComponent {
 
-  tipoPessoa: string;
+  tipoPessoa: string = "S";
  
   constructor() {
     

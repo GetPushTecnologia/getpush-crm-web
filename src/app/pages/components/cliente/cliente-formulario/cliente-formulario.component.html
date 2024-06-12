@@ -1,0 +1,43 @@
+
+<nb-card *ngIf="tipoPessoa !== 'S'">
+    <nb-card-header>Dados Cliente {{ tipoPessoa === 'F' ? 'Física' : 'Jurídico'  }} </nb-card-header>
+    <nb-card-body>
+        
+        <!-- Fisico -->
+        <div *ngIf="tipoPessoa === 'F'">
+            <div class="form-group">
+                <label for="inputNome" class="label">Nome</label>
+                <input type="text" nbInput fullWidth id="inputNome" placeholder="Nome">
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="inputCpf" class="label">CPF</label>
+                    <input type="text" nbInput fullWidth id="inputCpf" placeholder="CPF">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputNascimnto" class="label">Nascimento</label>
+                    <input nbInput
+                        id="inputNascimnto"
+                        placeholder="Nascimento"
+                        [nbDatepicker]="formpicker">
+                    <nb-datepicker #formpicker></nb-datepicker>
+                </div>
+            </div>
+        </div>    
+
+        <!-- Juridico -->
+        <div *ngIf="tipoPessoa === 'J'">
+            <div class="form-group">
+                <label for="inputRazaoSocial" class="label">Razão Social</label>
+                <input type="text" nbInput fullWidth id="inputRazaoSocial" placeholder="RazaoSocial">
+            </div>             
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="inputCNPJ" class="label">CNPJ</label>
+                    <input type="text" nbInput fullWidth id="inputCNPJ" placeholder="CNPJ">
+                </div>            
+            </div>
+        </div>        
+    </nb-card-body>
+</nb-card>
