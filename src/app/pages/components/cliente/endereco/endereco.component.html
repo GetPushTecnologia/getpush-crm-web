@@ -1,8 +1,25 @@
 <nb-card>
     <nb-card-header>Endereço</nb-card-header>
     <nb-card-body>
+        <div class="row">
+            <div class="col-sm-3">
+                <label for="inputCep" class="label">CEP</label>
+                <input type="text" nbInput fullWidth id="inputCep" placeholder="CEP">
+            </div>
+            <div class="col-sm-9">
+                <label for="inputLogradouro" class="label">Lograouro</label>
+                <input type="text" nbInput fullWidth id="inputLogradouro" placeholder="Logradouro">
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+
+<!-- <nb-card>
+    <nb-card-header>Endereço</nb-card-header>
+    <nb-card-body>
         <ng2-smart-table [settings]="settings"
             [source]="source">
         </ng2-smart-table>
     </nb-card-body>
-</nb-card>
+</nb-card> -->

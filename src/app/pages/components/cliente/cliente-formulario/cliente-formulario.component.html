@@ -1,13 +1,75 @@
 
-<nb-card *ngIf="tipoPessoa !== 'S'">
-    <nb-card-header>Dados Cliente {{ tipoPessoa === 'F' ? 'Física' : 'Jurídico'  }} </nb-card-header>
+<nb-card>
+    <nb-card-header>Dados Cliente</nb-card-header>
     <nb-card-body>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                <label for="selectTipoPessoa" class="label">Tipo Cliente</label>
+                    <nb-select [(ngModel)]="tipoPessoa" id="selectTipoPessoa" placeholder="Tipo Cliente" shape="semi-round">
+                        <nb-option value="S" >Selecione</nb-option>
+                        <nb-option value="F">Física</nb-option>
+                        <nb-option value="J">Jurídico</nb-option>
+                    </nb-select>  
+                </div>      
+            </div>
+        </div>
         
-        <!-- Fisico -->
-        <div *ngIf="tipoPessoa === 'F'">
-            <div class="form-group">
+        <div class="row" *ngIf="tipoPessoa === 'F'">           
+            <div class="col-md-3 form-group">
+                <label for="inputCpf" class="label">CPF</label>
+                <input type="text" nbInput fullWidth id="inputCpf" placeholder="CPF" shape="semi-round">
+            </div>  
+            <div class="col-md-6 form-group">
+                <label for="inputNome" class="label">Nome</label>
+                <input type="text" nbInput fullWidth id="inputNome" placeholder="Nome" shape="semi-round">
+            </div>
+            <div class="col-md-2 form-group">
+                <label for="inputNascimnto" class="label">Nascimento</label>
+                <input nbInput
+                    id="inputNascimnto"
+                    placeholder="Nascimento"
+                    [nbDatepicker]="formpicker"
+                    shape="semi-round">
+                <nb-datepicker #formpicker></nb-datepicker>
+            </div>
+        </div>
+
+        <div *ngIf="tipoPessoa === 'J'">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="inputCNPJ" class="label">CNPJ</label>
+                    <input type="text" nbInput fullWidth id="inputCNPJ" placeholder="CNPJ" shape="semi-round">
+                </div>   
+                <div class="col-sm-9">
+                    <label for="inputRazaoSocial" class="label">Razão Social</label>
+                    <input type="text" nbInput fullWidth id="inputRazaoSocial" placeholder="RazaoSocial" shape="semi-round">
+                </div>            
+            </div>
+                      
+            
+        </div>
+       
+
+      
+        <!-- <div class="row">
+            <div class="col-sm-3">
+                <nb-select selected="S" [(ngModel)]="tipoPessoa">
+                    <nb-option value="S" >Selecione</nb-option>
+                    <nb-option value="F">Física</nb-option>
+                    <nb-option value="J">Jurídico</nb-option>
+                </nb-select>
+            </div>
+            <div class="col-sm-3">
                 <label for="inputNome" class="label">Nome</label>
                 <input type="text" nbInput fullWidth id="inputNome" placeholder="Nome">
+            </div>
+        </div>
+        
+
+        <div *ngIf="tipoPessoa === 'F'">
+            <div class="form-group">
+                
             </div>
             
             <div class="row">
@@ -26,7 +88,7 @@
             </div>
         </div>    
 
-        <!-- Juridico -->
+      
         <div *ngIf="tipoPessoa === 'J'">
             <div class="form-group">
                 <label for="inputRazaoSocial" class="label">Razão Social</label>
@@ -38,6 +100,6 @@
                     <input type="text" nbInput fullWidth id="inputCNPJ" placeholder="CNPJ">
                 </div>            
             </div>
-        </div>        
+        </div>         -->
     </nb-card-body>
 </nb-card>
