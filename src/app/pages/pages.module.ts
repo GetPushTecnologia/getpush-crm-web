@@ -10,6 +10,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ClienteFormularioComponent } from './components/cliente/cliente-formulario/cliente-formulario.component';
 import { FormsModule } from '@angular/forms';
 import { EnderecoComponent } from './components/cliente/endereco/endereco.component';
+import { ContatoTelefoneComponent } from './components/cliente/contato-telefone/contato-telefone.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { EnderecoComponent } from './components/cliente/endereco/endereco.compon
     FormsModule
   ],
   declarations: [
-    PagesComponent
+    PagesComponent    
   ],
 })
 export class PagesModule {
