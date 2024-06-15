@@ -16,6 +16,28 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Modulos',
     group: true,
   },
+  {
+    title: 'Cliente',
+    icon: 'person-outline',
+    children: [      
+      {
+        title: 'Novo',
+        icon: 'plus',
+        link: '/pages/cliente/cliente-novo'
+      }
+    ],
+  },
+  {
+    title: 'Estoque',
+    icon: 'car',
+    children: [
+      {
+        title: 'Cadastro',
+        icon: 'plus',
+        link: '/pages/estoque/cadastro-estoque'
+      }
+    ]
+  }
   // {
   //   title: 'Layout',
   //   icon: 'layout-outline',
@@ -208,16 +230,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  {
-    title: 'Cliente',
-    icon: 'text-outline',
-    children: [      
-      {
-        title: 'Novo',
-        link: '/pages/cliente/cliente-novo'
-      }
-    ],
-  },
+ 
   // {
   //   title: 'Tables & Data',
   //   icon: 'grid-outline',

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbAccordionModule, NbButtonModule, NbCardModule, NbDatepickerModule, NbInputModule } from '@nebular/theme';
+import { NbAccordionModule, NbButtonModule, NbCardModule, NbDatepickerModule, NbInputModule, NbTabsetModule } from '@nebular/theme';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ThemeModule } from '../../@theme/theme.module';
 import { ClienteRoutingModule, routedComponents } from './cliente-routing.module';
@@ -8,7 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { ClienteFormularioComponent } from '../components/cliente/cliente-formulario/cliente-formulario.component';
 import { EnderecoComponent } from '../components/cliente/endereco/endereco.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { ContatoTelefoneComponent } from '../components/cliente/contato-telefone/contato-telefone.component';
+import { ContatosComponent } from '../components/cliente/contatos/contatos.component';
+import { TelefoneComponent } from '../components/cliente/telefone/telefone.component';
+import { EmailComponent } from '../components/cliente/email/email.component';
 
 @NgModule({
   imports: [
@@ -22,13 +24,16 @@ import { ContatoTelefoneComponent } from '../components/cliente/contato-telefone
     NbDatepickerModule,
     Ng2SmartTableModule,
     NbButtonModule,
-    NbAccordionModule
+    NbAccordionModule,
+    NbTabsetModule
   ],
   declarations: [
     ...routedComponents,
     ClienteFormularioComponent,
     EnderecoComponent,
-    ContatoTelefoneComponent
+    ContatosComponent,
+    TelefoneComponent,
+    EmailComponent
   ],
 })
 export class ClienteModule { }

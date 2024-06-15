@@ -33,6 +33,11 @@ const routes: Routes = [{
       loadChildren: () => import('./cliente/cliente.module')
         .then(m => m.ClienteModule)
     },
+    {    
+      path: 'estoque',
+      loadChildren: () => import('./estoque/estoque.module')
+        .then(m => m.EstoqueModule)
+    },
     // {
     //   path: 'ui-features',
     //   loadChildren: () => import('./ui-features/ui-features.module')

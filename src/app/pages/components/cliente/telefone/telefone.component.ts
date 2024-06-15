@@ -2,29 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
-  selector: 'ngx-endereco',
-  templateUrl: './endereco.component.html',
-  styleUrls: ['./endereco.component.scss']
+  selector: 'ngx-telefone',
+  templateUrl: './telefone.component.html',
+  styleUrls: ['./telefone.component.scss']
 })
-export class EnderecoComponent implements OnInit {
-  
-  source: LocalDataSource = new LocalDataSource();
+export class TelefoneComponent implements OnInit {
 
-  constructor(){    
-  }
+  source: LocalDataSource = new LocalDataSource();
+  constructor(){}
 
   ngOnInit(): void {
     this.source.load(this.data);
   }
-  
-  data = [{
-    cep: '03210-001',
-    logradouro: 'Rua costa Barros',
-    numero: 1985,
-    complemento: 'Bloco 15 apto 44',    
-    estado: 'Sao Paulo',
-    cidade: 'SP'
+
+  data = [
+    {
+      telefone: '(11) 98614-9055',
+      tipoTelefone: 'Recado',
+      observacao: 'Telefone da casa do cliente'    
     },
+    {
+      telefone: '(11) 98614-9055',
+      tipoTelefone: 'WhatsApp',
+      observacao: 'WhatsApp do cliente'
+    }
   ]
 
   settings = {
@@ -43,37 +44,21 @@ export class EnderecoComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      cep: {
-        title: 'CEP',
+      telefone: {
+        title: 'Telefone',
         type: 'string',
         with: '16%'
       },
-      logradouro: {
-        title: 'Logradouro',
+      tipoTelefone: {
+        title: 'Tipo Telefone',
         type: 'string',
         with: '20%'
       },
-      numero: {
-        title: 'Nr',
+      observacao: {
+        title: 'Observação',
         type: 'number',
         with: '10%'
-      },
-      complemento: {
-        title: 'Complemento',
-        type: 'string',
-        with: '18%'
-      },      
-      cidade: {
-        title: 'Cidade',
-        type: 'string',
-        with: '16%'
-      },
-      estado: {
-        title: 'Estado',
-        type: 'string',
-        with: '16.6%'
-      },
+      }      
     }
   }
-
 }

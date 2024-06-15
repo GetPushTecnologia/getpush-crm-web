@@ -1,64 +1,53 @@
-<nb-card>
-    <nb-card-body>
-        <nb-accordion>
-            <nb-accordion-item>
-            <nb-accordion-item-header>Endereco</nb-accordion-item-header>
-                <nb-accordion-item-body>
-                    <div class="row">
-                        <div class="col-sm-2 form-group">
-                            <label for="inputCep" class="label">CEP</label>
-                            <input type="text" nbInput fullWidth id="inputCep" placeholder="CEP" shape="semi-round">
-                        </div>
-                        <div class="col-sm-8 form-group">
-                            <label for="inputLogradouro" class="label">Lograouro</label>
-                            <input type="text" nbInput fullWidth id="inputLogradouro" placeholder="Logradouro" shape="semi-round">
-                        </div>
-                        <div class="col-sm-2 form-group">
-                            <label for="inputNumero" class="label">Número</label>
-                            <input type="text" nbInput fullWidth id="inputNumero" placeholder="Numero" shape="semi-round">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 form-group">
-                            <label for="inputComplemento" class="label">Complemento</label>
-                            <input type="text" nbInput fullWidth id="inputComplemento" jplaceholder="Complemento" shape="semi-round">
-                        </div>
-                        <div class="col-lg-4 form-group">
-                            
-                                <label for="Cidade" class="label">Cidade</label>
-                                    <nb-select id="Cidade" placeholder="Cidade" shape="semi-round" fullWidth>
-                                    <nb-option value="0">Selecione</nb-option>
-                                    <nb-option value="1">São Paulo</nb-option>
-                                    <nb-option value="2">Rio de Janeiro</nb-option>
-                                </nb-select>  
-                            
-                        </div>
-                        <div class="col-lg-2 form-group">
-                            <label for="selectEstado" class="label">Estado</label>
-                                <nb-select id="selectEstado" placeholder="Estado" shape="semi-round" fullWidth>
-                                <nb-option value="SS" >Selecione</nb-option>
-                                <nb-option value="SP">SP</nb-option>
-                                <nb-option value="RJ">RJ</nb-option>
-                            </nb-select>
-                        </div>
-                    </div>
-                </nb-accordion-item-body>
-            </nb-accordion-item>
-        </nb-accordion>
-        
-    </nb-card-body>
-</nb-card>
-
-<!-- <nb-card>
-    
-    <nb-card-body>
-        <nb-accordion>
-            <nb-accordion-item-header>Endereco</nb-accordion-item-header>
-            <nb-accordion-item>
-                <nb-accordion-item-body>
+<nb-accordion>
+    <nb-accordion-item>
+    <nb-accordion-item-header>Endereco</nb-accordion-item-header>
+        <nb-accordion-item-body>
+            <div class="row">
+                <div class="col-sm-2 form-group">
+                    <label for="inputCep" class="label">CEP</label>
+                    <input type="text" nbInput fullWidth id="inputCep" placeholder="CEP" shape="semi-round">
+                </div>
+                <div class="col-sm-8 form-group">
+                    <label for="inputLogradouro" class="label">Lograouro</label>
+                    <input type="text" nbInput fullWidth id="inputLogradouro" placeholder="Logradouro" shape="semi-round">
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="inputNumero" class="label">Número</label>
+                    <input type="text" nbInput fullWidth id="inputNumero" placeholder="Numero" shape="semi-round">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 form-group">
+                    <label for="inputComplemento" class="label">Complemento</label>
+                    <input type="text" nbInput fullWidth id="inputComplemento" jplaceholder="Complemento" shape="semi-round">
+                </div>
+                <div class="col-lg-4 form-group">
                     
-                </nb-accordion-item-body>
-            </nb-accordion-item>
-        </nb-accordion>
-    </nb-card-body>
-</nb-card> -->
+                        <label for="Cidade" class="label">Cidade</label>
+                            <nb-select id="Cidade" placeholder="Cidade" shape="semi-round" fullWidth>
+                            <nb-option value="0">Selecione</nb-option>
+                            <nb-option value="1">São Paulo</nb-option>
+                            <nb-option value="2">Rio de Janeiro</nb-option>
+                        </nb-select>  
+                    
+                </div>
+                <div class="col-lg-2 form-group">
+                    <label for="selectEstado" class="label">Estado</label>
+                        <nb-select id="selectEstado" placeholder="Estado" shape="semi-round" fullWidth>
+                        <nb-option value="SS" >Selecione</nb-option>
+                        <nb-option value="SP">SP</nb-option>
+                        <nb-option value="RJ">RJ</nb-option>
+                    </nb-select>
+                </div>
+            </div>
+
+            <button nbButton status="primary" hero>
+                Salvar
+            </button>
+            
+            <!-- <ng2-smart-table [settings]="settings" [source]="source">
+            </ng2-smart-table> -->
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+</nb-accordion>       
+
