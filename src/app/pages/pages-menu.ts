@@ -13,6 +13,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   link: '/pages/iot-dashboard',
   // },
   {
+    title: 'Dashboard',
+    icon: 'home-outline',
+    link: ''
+  },
+  {
+    title: 'Fazer venda',
+    icon: 'shopping-cart-outline',
+    link: ''
+  },
+  {
     title: 'Modulos',
     group: true,
   },
@@ -32,9 +42,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'car',
     children: [
       {
-        title: 'Cadastro',
+        title: 'Cadastrar',
         icon: 'plus',
-        link: '/pages/estoque/cadastro-estoque'
+        link: '/pages/estoque/estoque-cadastro'
       }
     ]
   }

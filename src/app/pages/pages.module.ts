@@ -8,7 +8,6 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { FormsModule } from '@angular/forms';
-import { TelefoneComponent } from './components/cliente/telefone/telefone.component';
 
 @NgModule({
   imports: [
@@ -21,7 +20,7 @@ import { TelefoneComponent } from './components/cliente/telefone/telefone.compon
     FormsModule
   ],
   declarations: [
-    PagesComponent
+    PagesComponent    
   ],
 })
 export class PagesModule {
