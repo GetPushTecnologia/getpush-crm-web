@@ -50,10 +50,11 @@
                 </nb-select>    
             </div>
         </div>
-    </nb-card-body>
-    <nb-card-footer *ngIf="(tipoPessoa === 'F' || tipoPessoa === 'J')">
-        <button nbButton status="primary" hero>
-            Salvar
-        </button>
-    </nb-card-footer>
+
+        <div class="buttons-row"  *ngIf="(tipoPessoa === 'F' || tipoPessoa === 'J')">            
+            <button nbButton status="primary" shape="semi-round">
+                Salvar
+            </button>            
+        </div> 
+    </nb-card-body>  
 </nb-card>

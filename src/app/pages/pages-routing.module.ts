@@ -4,20 +4,20 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
-import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+// import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    {
-      path: 'dashboard',
-      component: ECommerceComponent,
-    },
-    {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
-    },
+    // {
+    //   path: 'dashboard',
+    //   component: ECommerceComponent,
+    // },
+    // {
+    //   path: 'iot-dashboard',
+    //   component: DashboardComponent,
+    // },
     // {
     //   path: 'layout',
     //   loadChildren: () => import('./layout/layout.module')
@@ -38,6 +38,11 @@ const routes: Routes = [{
       loadChildren: () => import('./estoque/estoque.module')
         .then(m => m.EstoqueModule)
     },
+    {
+      path: 'vendas',
+      loadChildren: () => import('./vendas/vendas.module')
+        .then(m => m.VendasModule)  
+    }, 
     // {
     //   path: 'ui-features',
     //   loadChildren: () => import('./ui-features/ui-features.module')
@@ -63,11 +68,11 @@ const routes: Routes = [{
     //   loadChildren: () => import('./charts/charts.module')
     //     .then(m => m.ChartsModule),
     // },
-    {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
+    // {
+    //   path: 'editors',
+    //   loadChildren: () => import('./editors/editors.module')
+    //     .then(m => m.EditorsModule),
+    // },
     // {
     //   path: 'tables',
     //   loadChildren: () => import('./tables/tables.module')
@@ -83,10 +88,10 @@ const routes: Routes = [{
     //   redirectTo: 'dashboard',
     //   pathMatch: 'full',
     // },
-    {
-      path: '**',
-      component: NotFoundComponent,
-    },
+    // {
+    //   path: '**',
+    //   component: NotFoundComponent,
+    // },
   ],
 }];
 

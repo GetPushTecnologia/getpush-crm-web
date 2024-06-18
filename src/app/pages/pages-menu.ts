@@ -20,7 +20,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Fazer venda',
     icon: 'shopping-cart-outline',
-    link: ''
+    link: '/pages/vendas/vendas-novo'
   },
   {
     title: 'Modulos',
@@ -28,14 +28,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Cliente',
-    icon: 'person-outline',
-    children: [      
+    icon: 'person',
+    children: [
       {
-        title: 'Novo',
+        title: 'Novo Cliente',
         icon: 'plus',
         link: '/pages/cliente/cliente-novo'
       }
-    ],
+    ]
   },
   {
     title: 'Estoque',
@@ -47,7 +47,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/estoque/estoque-cadastro'
       }
     ]
-  }
+  },
   // {
   //   title: 'Layout',
   //   icon: 'layout-outline',
@@ -75,38 +75,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  // {
-  //   title: 'Forms',
-  //   icon: 'edit-2-outline',
-  //   children: [
-  //     {
-  //       title: 'Form Inputs',
-  //       link: '/pages/forms/inputs',
-  //     },
-  //     {
-  //       title: 'Form Layouts',
-  //       link: '/pages/forms/layouts',
-  //     },
-  //     {
-  //       title: 'Buttons',
-  //       link: '/pages/forms/buttons',
-  //     },
-  //     {
-  //       title: 'Datepicker',
-  //       link: '/pages/forms/datepicker',
-  //     },
-  //   ],
-  // },
-  // {
-  //   title: 'Cliente',
-  //   icon: 'person',
-  //   children: [
-  //     {
-  //       title: 'Novo Cliente',
-  //       link: '/pages/cliente/cliente-novo'
-  //     }
-  //   ]
-  // },
+  {
+    title: 'Forms',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'Form Inputs',
+        link: '/pages/forms/inputs',
+      },
+      {
+        title: 'Form Layouts',
+        link: '/pages/forms/layouts',
+      },
+      {
+        title: 'Buttons',
+        link: '/pages/forms/buttons',
+      },
+      {
+        title: 'Datepicker',
+        link: '/pages/forms/datepicker',
+      },
+    ],
+  },
+  
   // {
   //   title: 'UI Features',
   //   icon: 'keypad-outline',

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { NbComponentStatus, NbDateService } from '@nebular/theme';
-
 @Component({
   selector: 'ngx-cliente-formulario',
   templateUrl: './cliente-formulario.component.html',
