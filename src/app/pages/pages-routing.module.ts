@@ -14,10 +14,10 @@ const routes: Routes = [{
     //   path: 'dashboard',
     //   component: ECommerceComponent,
     // },
-    // {
-    //   path: 'iot-dashboard',
-    //   component: DashboardComponent,
-    // },
+    {
+      path: 'iot-dashboard',
+      component: DashboardComponent,
+    },
     // {
     //   path: 'layout',
     //   loadChildren: () => import('./layout/layout.module')
@@ -83,11 +83,11 @@ const routes: Routes = [{
     //   loadChildren: () => import('./miscellaneous/miscellaneous.module')
     //     .then(m => m.MiscellaneousModule),
     // },
-    // {
-    //   path: '',
-    //   redirectTo: 'dashboard',
-    //   pathMatch: 'full',
-    // },
+    {
+      path: '',
+      redirectTo: 'dashboard',
+      pathMatch: 'full',
+    },
     // {
     //   path: '**',
     //   component: NotFoundComponent,

@@ -7,16 +7,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   link: '/pages/dashboard',
   //   home: true,
   // },
-  // {
-  //   title: 'IoT Dashboard',
-  //   icon: 'home-outline',
-  //   link: '/pages/iot-dashboard',
-  // },
   {
     title: 'Dashboard',
     icon: 'home-outline',
-    link: ''
+    link: '/pages/iot-dashboard',
   },
+  // {
+  //   title: 'Dashboard',
+  //   icon: 'home-outline',
+  //   link: ''
+  // },
   {
     title: 'Fazer venda',
     icon: 'shopping-cart-outline',

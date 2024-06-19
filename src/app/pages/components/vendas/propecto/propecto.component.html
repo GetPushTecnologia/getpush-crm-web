@@ -1,14 +1,23 @@
-<nb-card>
+<!-- <nb-card>
     <nb-card-header>Pesquisar Cliente</nb-card-header>
-    <nb-card-body>
-        <div class="col-md-3 form-group">
+    <nb-card-body> -->
+        <div class="row">
+             <div class="col-md-3 form-group">
             <label for="inputCNPJ" class="label">CPF / CNPJ</label>
             <input type="text" nbInput fullWidth id="inputCNPJ" placeholder="CNPJ" shape="semi-round">
+            </div>
+            
+            <div class="col-md-6 form-group">
+                <label for="inputNome" class="label">Nome</label>
+                <input type="text" nbInput fullWidth id="inputNome" placeholder="Nome" shape="semi-round">
+            </div>
+            <div class="col-md-3 form-group mt-4">
+                <button nbButton status="info" shape="semi-round">
+                    Pesquisar
+                </button> 
+            </div>
         </div>
+       
         
-        <div class="col-md-6 form-group">
-            <label for="inputNome" class="label">Nome</label>
-            <input type="text" nbInput fullWidth id="inputNome" placeholder="Nome" shape="semi-round">
-        </div>
-    </nb-card-body>
-</nb-card>
+    <!-- </nb-card-body>
+</nb-card> -->
