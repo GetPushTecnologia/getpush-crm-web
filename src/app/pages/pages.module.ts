@@ -8,6 +8,9 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from './charts/charts.module';
+import { DividentosComponent } from './components/fluxo-caixa/dividentos/dividentos.component';
+import { RecebiveisComponent } from './components/fluxo-caixa/recebiveis/recebiveis.component';
 
 @NgModule({
   imports: [
@@ -17,10 +20,11 @@ import { FormsModule } from '@angular/forms';
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   declarations: [
-    PagesComponent
+    PagesComponent,
       
   ],
 })
