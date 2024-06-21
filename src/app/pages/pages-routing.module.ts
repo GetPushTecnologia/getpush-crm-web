@@ -48,8 +48,11 @@ const routes: Routes = [{
       loadChildren: () => import('./vendas/vendas.module')
         .then(m => m.VendasModule)  
     },
-   
-    
+    {
+      path: 'forms',
+      loadChildren: () => import('./forms/forms.module')
+        .then(m => m.FormsModule),
+    },
     // {
     //   path: 'miscellaneous',
     //   loadChildren: () => import('./miscellaneous/miscellaneous.module')

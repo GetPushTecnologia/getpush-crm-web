@@ -45,8 +45,8 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: 'pages/fluxo-caixa/fluxo-caixa-painel', pathMatch: 'full' },
+  { path: '**', redirectTo: 'pages/fluxo-caixa/fluxo-caixa-painel' },
 ];
 
 const config: ExtraOptions = {

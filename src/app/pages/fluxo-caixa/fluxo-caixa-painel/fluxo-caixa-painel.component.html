@@ -1,46 +1,84 @@
 <div class="row">
-    <div class="col-sm-3">
-        <nb-card>
-            <nb-card-header>
-                <span class="d-flex justify-content-center">Dividentos</span>
-            </nb-card-header>
-            <nb-card-body>
-                <div class="d-flex justify-content-center">                    
-                    <h5 class="color-dividento">- R$ 100,00</h5>
-                </div>                
-            </nb-card-body>
-        </nb-card>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <nb-card>
+                    <nb-card-header>Filtros</nb-card-header>
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-sm-4 form-group mt-2">
+                                <!-- <label for="selectDateDe" class="label">De</label> -->
+                                <input nbInput placeholder="De" [nbDatepicker]="formpicker" id="selectDateDe" fullWidth>
+                                <nb-datepicker #formpicker></nb-datepicker>
+                            </div>
+                            <div class="col-sm-4 form-group mt-2">
+                                <!-- <label for="selectDateAte" class="label">De</label> -->
+                                <input nbInput placeholder="até" [nbDatepicker]="formpicker" id="fullWidth" fullWidth>
+                                <nb-datepicker #formpicker></nb-datepicker>
+                            </div>
+                            <div class="col-sm-4">
+                                <button nbButton status="success" fullWidth>
+                                   Filtrar
+                                  </button>
+                            </div>
+                        </div>
+                       
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <nb-card>
+                    <nb-card-header>
+                        <span class="d-flex justify-content-center">A pagar</span>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div class="d-flex justify-content-center">                    
+                            <h6 class="color-dividento">- R$ 100,00</h6>
+                        </div>                
+                    </nb-card-body>
+                </nb-card>
+            </div>
+             
+            <div class="col-sm-6">
+                <nb-card>
+                    <nb-card-header>               
+                        <span class="d-flex justify-content-center">A receber</span>                
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div class="d-flex justify-content-center">                   
+                            <h6 class="color-recebiveis">R$ 100,00</h6>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <nb-card>
+                    <nb-card-header>
+                        <span class="d-flex justify-content-center">Total</span>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div class="d-flex justify-content-center">                    
+                            R$ 50,00
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-3">
-        <nb-card>
-            <nb-card-header>               
-                <span class="d-flex justify-content-center">Recebiveis</span>                
-            </nb-card-header>
-            <nb-card-body>
-                <div class="d-flex justify-content-center">                   
-                    <h5 class="color-recebiveis">R$ 100,00</h5>
-                </div>
-            </nb-card-body>
-        </nb-card>
-    </div>
-    <!-- <div class="col-sm-5">
-        <ngx-echarts-pie></ngx-echarts-pie>
-    </div> -->
-</div>
-<div class="row">
     <div class="col-sm-6">
         <nb-card>
-            <nb-card-header>
-                <span class="d-flex justify-content-center">Total</span>
-            </nb-card-header>
             <nb-card-body>
-                <div class="d-flex justify-content-center">                    
-                    R$ 50,00
-                </div>
+                <ngx-echarts-pie></ngx-echarts-pie>
             </nb-card-body>
-        </nb-card>
+        </nb-card>   
     </div>
 </div>
+
 
 <nb-flip-card>
     <nb-card-front>
@@ -59,9 +97,11 @@
       </nb-card>
     </nb-card-front>
     <nb-card-back>
-      <nb-card>
+      <nb-card heigth="500px">
         <nb-card-body>
-          Back
+            <div >
+                <ngx-chartjs-line></ngx-chartjs-line>
+            </div>          
         </nb-card-body>
       </nb-card>
     </nb-card-back>

@@ -15,14 +15,14 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+    // this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
-      const colors = config.variables;
-      const echarts: any = config.variables.echarts;
+      // const colors = config.variables;
+      // const echarts: any = config.variables.echarts;
 
       this.options = {
-        backgroundColor: echarts.bg,
-        color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
+        // backgroundColor: echarts.bg,
+        color: ['#FF6347', '#3CB371'],
         
         tooltip: {
           trigger: 'item',
@@ -31,9 +31,9 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
         legend: {
           orient: 'vertical',
           left: 'left',
-          data: ['USA', 'Germany', 'France', 'Canada', 'Russia'],
+          data: ['A pagar', 'A receber'],
           textStyle: {
-            color: echarts.textColor,
+            // color: echarts.textColor,
           },
         },
         series: [
@@ -43,37 +43,35 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
             radius: '80%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: 'Germany' },
-              { value: 310, name: 'France' },
-              { value: 234, name: 'Canada' },
-              { value: 135, name: 'Russia' },
-              { value: 1548, name: 'USA' },
+              { value: 335, name: 'A pagar' },
+              { value: 310, name: 'A receber' },
+              
             ],
             itemStyle: {
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: echarts.itemHoverShadowColor,
+                // shadowColor: echarts.itemHoverShadowColor,
               },
             },
             label: {
               normal: {
                 textStyle: {
-                  color: echarts.textColor,
+                  // color: echarts.textColor,
                 },
               },
             },
             labelLine: {
               normal: {
                 lineStyle: {
-                  color: echarts.axisLineColor,
+                  // color: echarts.axisLineColor,
                 },
               },
             },
           },
         ],
       };
-    });
+    // });
   }
 
   ngOnDestroy(): void {
