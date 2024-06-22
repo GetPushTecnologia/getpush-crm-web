@@ -34,7 +34,7 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     FormsRoutingModule,
     NbSelectModule,
     NbIconModule,
-    ngFormsModule,
+    ngFormsModule,    
   ],
   declarations: [
     FormsComponent,

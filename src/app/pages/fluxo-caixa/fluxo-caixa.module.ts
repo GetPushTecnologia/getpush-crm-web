@@ -11,6 +11,9 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { DividentosComponent } from '../components/fluxo-caixa/dividentos/dividentos.component';
 import { RecebiveisComponent } from '../components/fluxo-caixa/recebiveis/recebiveis.component';
+import { GraficoLinhaComponent } from '../components/graficos/grafico-linha/grafico-linha.component';
+import { GraficoPizzaComponent } from '../components/graficos/grafico-pizza/grafico-pizza.component';
+import { ChartModule } from 'angular2-chartjs';
 
 @NgModule({  
   imports: [
@@ -26,12 +29,18 @@ import { RecebiveisComponent } from '../components/fluxo-caixa/recebiveis/recebi
     Ng2SmartTableModule,
     NbDatepickerModule.forRoot(),
     NbInputModule,
-    NbButtonModule
+    NbButtonModule,
+   
+    NgxEchartsModule,
+    NgxChartsModule,
+    ChartModule,
   ],
   declarations: [
     ...routedComponents,
     DividentosComponent,
-    RecebiveisComponent
+    RecebiveisComponent,
+    GraficoLinhaComponent,
+    GraficoPizzaComponent
   ]
 })
 export class FluxoCaixaModule { }

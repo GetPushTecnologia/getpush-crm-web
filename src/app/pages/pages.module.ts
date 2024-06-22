@@ -9,8 +9,9 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from './charts/charts.module';
-import { DividentosComponent } from './components/fluxo-caixa/dividentos/dividentos.component';
-import { RecebiveisComponent } from './components/fluxo-caixa/recebiveis/recebiveis.component';
+import { ChartModule } from 'angular2-chartjs';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
@@ -21,10 +22,14 @@ import { RecebiveisComponent } from './components/fluxo-caixa/recebiveis/recebiv
     ECommerceModule,
     MiscellaneousModule,
     FormsModule,
-    ChartsModule
+    // ChartsModule,
+    // NgxEchartsModule,
+    // NgxChartsModule,
+    // ChartModule,
+  
   ],
   declarations: [
-    PagesComponent,
+    PagesComponent,   
       
   ],
 })

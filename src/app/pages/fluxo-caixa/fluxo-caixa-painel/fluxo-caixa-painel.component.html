@@ -7,12 +7,10 @@
                     <nb-card-body>
                         <div class="row">
                             <div class="col-sm-4 form-group mt-2">
-                                <!-- <label for="selectDateDe" class="label">De</label> -->
                                 <input nbInput placeholder="De" [nbDatepicker]="formpicker" id="selectDateDe" fullWidth>
                                 <nb-datepicker #formpicker></nb-datepicker>
                             </div>
                             <div class="col-sm-4 form-group mt-2">
-                                <!-- <label for="selectDateAte" class="label">De</label> -->
                                 <input nbInput placeholder="até" [nbDatepicker]="formpicker" id="fullWidth" fullWidth>
                                 <nb-datepicker #formpicker></nb-datepicker>
                             </div>
@@ -35,7 +33,7 @@
                     </nb-card-header>
                     <nb-card-body>
                         <div class="d-flex justify-content-center">                    
-                            <h6 class="color-dividento">- R$ 100,00</h6>
+                            <h6 class="color-dividento">- {{ formatarMoeda(valorAPagar) }}</h6>
                         </div>                
                     </nb-card-body>
                 </nb-card>
@@ -48,7 +46,7 @@
                     </nb-card-header>
                     <nb-card-body>
                         <div class="d-flex justify-content-center">                   
-                            <h6 class="color-recebiveis">R$ 100,00</h6>
+                            <h6 class="color-recebiveis"> {{ formatarMoeda(valorAReceber) }} </h6>
                         </div>
                     </nb-card-body>
                 </nb-card>
@@ -63,7 +61,7 @@
                     </nb-card-header>
                     <nb-card-body>
                         <div class="d-flex justify-content-center">                    
-                            R$ 50,00
+                            <h6><span [ngClass]="total > 0 ? 'color-recebiveis' : 'color-dividento'" >{{ formatarMoeda(total) }}</span></h6>
                         </div>
                     </nb-card-body>
                 </nb-card>
@@ -73,12 +71,11 @@
     <div class="col-sm-6">
         <nb-card>
             <nb-card-body>
-                <ngx-echarts-pie></ngx-echarts-pie>
+                <ngx-grafico-pizza></ngx-grafico-pizza>
             </nb-card-body>
         </nb-card>   
     </div>
 </div>
-
 
 <nb-flip-card>
     <nb-card-front>
@@ -99,8 +96,8 @@
     <nb-card-back>
       <nb-card heigth="500px">
         <nb-card-body>
-            <div >
-                <ngx-chartjs-line></ngx-chartjs-line>
+            <div>
+                <ngx-grafico-linha></ngx-grafico-linha>
             </div>          
         </nb-card-body>
       </nb-card>
