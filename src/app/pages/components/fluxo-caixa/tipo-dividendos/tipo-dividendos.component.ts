@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogRef } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
-import { TipoRecebiveisComponent } from '../tipo-recebiveis/tipo-recebiveis.component';
 
 @Component({
-  selector: 'ngx-recebiveis',
-  templateUrl: './recebiveis.component.html',
-  styleUrls: ['./recebiveis.component.scss']
+  selector: 'ngx-tipo-dividendos',
+  templateUrl: './tipo-dividendos.component.html',
+  styleUrls: ['./tipo-dividendos.component.scss']
 })
-export class RecebiveisComponent implements OnInit {
+export class TipoDividendosComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private dialogService: NbDialogService) {}
+  constructor(protected ref: NbDialogRef<TipoDividendosComponent>) {}
 
   ngOnInit(): void {
     this.source.load(this.data);
@@ -66,11 +65,9 @@ export class RecebiveisComponent implements OnInit {
     }
   }
 
-  addTipoRecebiveis() {
-    this.dialogService.open(TipoRecebiveisComponent, {
-      context: {
-        // title: 'This is a title passed to the dialog component',
-      },
-    });
+  fechar(){
+    this.ref.close();
   }
+
+
 }

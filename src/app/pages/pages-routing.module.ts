@@ -28,6 +28,12 @@ const routes: Routes = [{
     //   loadChildren: () => import('./layout/layout.module')
     //     .then(m => m.LayoutModule),
     // },
+
+    {
+        path: 'modal-overlays',
+        loadChildren: () => import('./modal-overlays/modal-overlays.module')
+          .then(m => m.ModalOverlaysModule),
+    },
     {
       path: 'charts',
       loadChildren: () => import('./charts/charts.module')

@@ -3,8 +3,14 @@
         <div class="d-flex justify-content-center">
             <span>Dividentos</span>
         </div>
-    </nb-card-header> 
+    </nb-card-header>
 </nb-card>
+
+<div class="d-flex justify-content-end">
+    <button nbButton status="primary" ghost (click)="ddTipoDividendos()">
+        + Tipo Dividendo    
+    </button>
+</div>
 
 <ng2-smart-table [settings]="settings" [source]="source">
 </ng2-smart-table> 

@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
+import { TipoDividendosComponent } from '../tipo-dividendos/tipo-dividendos.component';
 
 @Component({
-  selector: 'ngx-dividentos',
-  templateUrl: './dividentos.component.html',
-  styleUrls: ['./dividentos.component.scss']
+  selector: 'ngx-dividendos',
+  templateUrl: './dividendos.component.html',
+  styleUrls: ['./dividendos.component.scss']
 })
-export class DividentosComponent implements OnInit {
+export class DividendosComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor() {}
+  constructor(private dialogService: NbDialogService) {}
+
   ngOnInit(): void {
     this.source.load(this.data);
   }
@@ -61,5 +64,13 @@ export class DividentosComponent implements OnInit {
         with: '10%'
       }      
     }
+  }
+
+  ddTipoDividendos() {
+    this.dialogService.open(TipoDividendosComponent, {
+      context: {
+        // title: 'This is a title passed to the dialog component',
+      },
+    });
   }
 }

@@ -6,6 +6,11 @@
     </nb-card-header>
 </nb-card>
 
+<div class="d-flex justify-content-end">
+    <button nbButton status="primary" ghost (click)="addTipoRecebiveis()">
+        + Tipo Recebiveis    
+    </button>
+</div>
 
 <ng2-smart-table [settings]="settings" [source]="source">
 </ng2-smart-table> 

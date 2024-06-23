@@ -4,17 +4,26 @@ import { FluxoCaixaRoutingModule, routedComponents } from './fluxo-caixa.routing
 import { ThemeModule } from '../../@theme/theme.module';
 import { FormsModule } from '@angular/forms';
 import { NbButtonModule, NbCardModule, NbDatepickerModule, NbIconModule, NbInputModule } from '@nebular/theme';
-import { ChartjsPieComponent } from '../charts/chartjs/chartjs-pie.component';
 import { ChartsModule } from '../charts/charts.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { DividentosComponent } from '../components/fluxo-caixa/dividentos/dividentos.component';
+import { DividendosComponent } from '../components/fluxo-caixa/dividendos/dividendos.component';
 import { RecebiveisComponent } from '../components/fluxo-caixa/recebiveis/recebiveis.component';
 import { GraficoLinhaComponent } from '../components/graficos/grafico-linha/grafico-linha.component';
 import { GraficoPizzaComponent } from '../components/graficos/grafico-pizza/grafico-pizza.component';
 import { ChartModule } from 'angular2-chartjs';
+import { TipoDividendosComponent } from '../components/fluxo-caixa/tipo-dividendos/tipo-dividendos.component';
+import { TipoRecebiveisComponent } from '../components/fluxo-caixa/tipo-recebiveis/tipo-recebiveis.component';
 
+const components = [ 
+  DividendosComponent,
+    RecebiveisComponent,
+    GraficoLinhaComponent,
+    GraficoPizzaComponent,
+    TipoDividendosComponent,
+    TipoRecebiveisComponent
+]
 @NgModule({  
   imports: [
     CommonModule,
@@ -37,10 +46,7 @@ import { ChartModule } from 'angular2-chartjs';
   ],
   declarations: [
     ...routedComponents,
-    DividentosComponent,
-    RecebiveisComponent,
-    GraficoLinhaComponent,
-    GraficoPizzaComponent
+    ...components
   ]
 })
 export class FluxoCaixaModule { }

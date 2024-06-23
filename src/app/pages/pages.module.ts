@@ -12,6 +12,8 @@ import { ChartsModule } from './charts/charts.module';
 import { ChartModule } from 'angular2-chartjs';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { TipoDividendosComponent } from './components/fluxo-caixa/tipo-dividendos/tipo-dividendos.component';
+import { TipoRecebiveisComponent } from './components/fluxo-caixa/tipo-recebiveis/tipo-recebiveis.component';
 
 @NgModule({
   imports: [
@@ -21,15 +23,11 @@ import { NgxEchartsModule } from 'ngx-echarts';
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
-    FormsModule,
-    // ChartsModule,
-    // NgxEchartsModule,
-    // NgxChartsModule,
-    // ChartModule,
-  
+    FormsModule,  
   ],
   declarations: [
-    PagesComponent,   
+    PagesComponent,
+    
       
   ],
 })
