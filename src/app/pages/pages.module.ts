@@ -8,12 +8,6 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { FormsModule } from '@angular/forms';
-import { ChartsModule } from './charts/charts.module';
-import { ChartModule } from 'angular2-chartjs';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { NgxEchartsModule } from 'ngx-echarts';
-import { TipoDividendosComponent } from './components/fluxo-caixa/tipo-dividendos/tipo-dividendos.component';
-import { TipoRecebiveisComponent } from './components/fluxo-caixa/tipo-recebiveis/tipo-recebiveis.component';
 
 @NgModule({
   imports: [
@@ -27,8 +21,6 @@ import { TipoRecebiveisComponent } from './components/fluxo-caixa/tipo-recebivei
   ],
   declarations: [
     PagesComponent,
-    
-      
   ],
 })
 export class PagesModule {

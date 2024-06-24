@@ -22,6 +22,38 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'pie-chart',
     link: '/pages/fluxo-caixa/fluxo-caixa-painel'
   },
+  {
+    title: 'Dividentos',
+    icon: '',
+    children: [
+      {
+        title: 'Novo',
+        icon: 'plus',
+        link: '/pages/dividendos-modulo/novo-dividendo'
+      },
+      {
+        title: 'Tipo Dividendos',
+        icon: 'plus',
+        link: '/pages/dividendos-modulo/novo-tipo-dividendo'
+      }
+    ]
+  },
+  {
+    title: 'Recebiveis',
+    icon: '',
+    children: [
+      {
+        title: 'Novo',
+        icon: 'plus',
+        link: '/pages/recebiveis-modulo/novo-recebiveis'
+      },
+      {
+        title: 'Tipo Recebiveis',
+        icon: 'plus',
+        link: '/pages/recebiveis-modulo/novo-tipo-recebiveis'
+      }
+    ]
+  }
   // {
   //   title: 'Fazer venda',
   //   icon: 'shopping-cart-outline',

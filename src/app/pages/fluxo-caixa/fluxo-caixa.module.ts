@@ -39,7 +39,6 @@ const components = [
     NbDatepickerModule.forRoot(),
     NbInputModule,
     NbButtonModule,
-   
     NgxEchartsModule,
     NgxChartsModule,
     ChartModule,

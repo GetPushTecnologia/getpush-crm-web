@@ -59,6 +59,16 @@ const routes: Routes = [{
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
     },
+    {
+      path: 'dividendos-modulo',
+      loadChildren: () => import('./dividendos-modulo/dividendos-modulo.module')
+        .then(m => m.DividendosModuloModule)
+    },
+    {
+      path: 'recebiveis-modulo',
+      loadChildren: () => import('./recebiveis-modulo/recebiveis-modulo.module')
+        .then(m => m.RecebiveisModuloModule)
+    },
     // {
     //   path: 'miscellaneous',
     //   loadChildren: () => import('./miscellaneous/miscellaneous.module')
