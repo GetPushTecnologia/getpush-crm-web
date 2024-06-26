@@ -3,20 +3,19 @@ import { CommonModule } from '@angular/common';
 import { ThemeModule } from '../../@theme/theme.module';
 import { RecebiveisModuloRoutingModule, routedComponents } from './recebiveis-modulo.routing.module';
 import { NovoTipoRecebiveisComponent } from './novo-tipo-recebiveis/novo-tipo-recebiveis.component';
-import { NovoRecebiveisComponent } from './novo-recebiveis/novo-recebiveis.component';
-import { DividendosComponent } from '../components/fluxo-caixa/dividendos/dividendos.component';
+import { SharedModule } from '../../shared/shared.module';
+
 
 const components = [
-  NovoTipoRecebiveisComponent,
-  NovoRecebiveisComponent,
-  // DividendosComponent
+  NovoTipoRecebiveisComponent
 ]
 
 @NgModule({
   imports: [
     CommonModule,
     ThemeModule,
-    RecebiveisModuloRoutingModule
+    RecebiveisModuloRoutingModule,
+    SharedModule
   ],
   declarations: [
     ...routedComponents,

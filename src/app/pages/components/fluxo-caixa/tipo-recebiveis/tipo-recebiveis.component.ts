@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+// import { NbDialogRef } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
@@ -11,7 +11,9 @@ export class TipoRecebiveisComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
   
-  constructor(protected ref: NbDialogRef<TipoRecebiveisComponent>) {}
+  constructor(
+    // protected ref: NbDialogRef<TipoRecebiveisComponent>
+  ) {}
   
   ngOnInit(): void {
     this.source.load(this.data);
@@ -66,6 +68,6 @@ export class TipoRecebiveisComponent implements OnInit {
   }
 
   fechar(){
-    this.ref.close();
+    // this.ref.close();
   }
 }

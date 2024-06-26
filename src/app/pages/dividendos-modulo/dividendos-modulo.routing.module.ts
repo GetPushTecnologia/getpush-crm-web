@@ -28,4 +28,5 @@ export class DividendosModuloRoutingModule { }
 
 export const routedComponents = [
     DividendosModuloComponent,
+    
 ]

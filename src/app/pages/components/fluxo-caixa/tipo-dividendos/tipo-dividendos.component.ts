@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+// import { NbDialogRef } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
   selector: 'ngx-tipo-dividendos',
   templateUrl: './tipo-dividendos.component.html',
   styleUrls: ['./tipo-dividendos.component.scss']
+  // providers: [NbDialogRef]
 })
 export class TipoDividendosComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(protected ref: NbDialogRef<TipoDividendosComponent>) {}
+  constructor(
+    // protected ref: NbDialogRef<TipoDividendosComponent>
+  ) {}
 
   ngOnInit(): void {
     this.source.load(this.data);
@@ -65,9 +68,7 @@ export class TipoDividendosComponent implements OnInit {
     }
   }
 
-  fechar(){
-    this.ref.close();
-  }
-
-
+   fechar(){
+  //   this.ref.close();
+   }
 }

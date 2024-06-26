@@ -8,44 +8,44 @@ import { ChartsModule } from '../charts/charts.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { DividendosComponent } from '../components/fluxo-caixa/dividendos/dividendos.component';
-import { RecebiveisComponent } from '../components/fluxo-caixa/recebiveis/recebiveis.component';
 import { GraficoLinhaComponent } from '../components/graficos/grafico-linha/grafico-linha.component';
 import { GraficoPizzaComponent } from '../components/graficos/grafico-pizza/grafico-pizza.component';
 import { ChartModule } from 'angular2-chartjs';
-import { TipoDividendosComponent } from '../components/fluxo-caixa/tipo-dividendos/tipo-dividendos.component';
 import { TipoRecebiveisComponent } from '../components/fluxo-caixa/tipo-recebiveis/tipo-recebiveis.component';
+import { TipoDividendosComponent } from '../components/fluxo-caixa/tipo-dividendos/tipo-dividendos.component';
+import { RecebiveisComponent } from '../components/fluxo-caixa/recebiveis/recebiveis.component';
+import { DividendosComponent } from '../components/fluxo-caixa/dividendos/dividendos.component';
+import { SharedModule } from '../../shared/shared.module';
 
-const components = [ 
-  DividendosComponent,
-    RecebiveisComponent,
-    GraficoLinhaComponent,
-    GraficoPizzaComponent,
-    TipoDividendosComponent,
-    TipoRecebiveisComponent
+
+const components = [
+  GraficoLinhaComponent,
+  GraficoPizzaComponent,  
 ]
 @NgModule({  
   imports: [
     CommonModule,
-    ThemeModule,
+    // ThemeModule,
     FluxoCaixaRoutingModule,
     FormsModule,
-    NbCardModule,
-    NbIconModule,
-    ChartsModule,
-    NgxEchartsModule,
-    NgxChartsModule,
-    Ng2SmartTableModule,
-    NbDatepickerModule.forRoot(),
-    NbInputModule,
-    NbButtonModule,
-    NgxEchartsModule,
-    NgxChartsModule,
-    ChartModule,
+    // NbCardModule,
+    // NbIconModule,
+    // ChartsModule,
+    // NgxEchartsModule,
+    // NgxChartsModule,
+    // Ng2SmartTableModule,
+    // NbDatepickerModule.forRoot(),
+    // NbInputModule,
+    // NbButtonModule,
+    // NgxEchartsModule,
+    // NgxChartsModule,
+    // ChartModule,
+    SharedModule
   ],
   declarations: [
     ...routedComponents,
     ...components
-  ]
+  ],
+
 })
 export class FluxoCaixaModule { }
