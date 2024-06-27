@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { TipoDividendosComponent } from '../tipo-dividendos/tipo-dividendos.component';
+import { PopupComponent } from '../../popup/popup/popup.component';
 
 @Component({
   selector: 'ngx-dividendos',
@@ -67,9 +68,9 @@ export class DividendosComponent implements OnInit {
   }
 
   ddTipoDividendos() {
-    this.dialogService.open(TipoDividendosComponent, {
+    this.dialogService.open(PopupComponent, {
       context: {
-        // title: 'This is a title passed to the dialog component',
+        tipoDados: 'Dividendos',
       },
     });
   }

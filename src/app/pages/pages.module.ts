@@ -13,6 +13,7 @@ import { TipoRecebiveisComponent } from './components/fluxo-caixa/tipo-recebivei
 import { TipoDividendosComponent } from './components/fluxo-caixa/tipo-dividendos/tipo-dividendos.component';
 import { RecebiveisComponent } from './components/fluxo-caixa/recebiveis/recebiveis.component';
 import { DividendosComponent } from './components/fluxo-caixa/dividendos/dividendos.component';
+import { PopupComponent } from './components/popup/popup/popup.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { DividendosComponent } from './components/fluxo-caixa/dividendos/dividen
   ],
   declarations: [
     PagesComponent,
+
   ],
   exports: [ 
     

@@ -16,7 +16,7 @@ export class GraficoLinhaComponent implements OnInit {
   }
 
    ngOnInit(): void {
-    //  this.carregarDados();
+     this.carregarDados();
    }
 
    carregarDados() {

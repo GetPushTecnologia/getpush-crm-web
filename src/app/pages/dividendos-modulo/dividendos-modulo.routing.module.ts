@@ -9,7 +9,7 @@ const routes: Routes = [{
     component: DividendosModuloComponent,
     children: [
         {
-            path: 'novo-modulo',
+            path: 'novo-dividendo',
             component: NovoDividendoComponent
         },
         {

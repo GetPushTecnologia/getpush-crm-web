@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { NbDialogRef } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
-
 @Component({
   selector: 'ngx-tipo-recebiveis',
   templateUrl: './tipo-recebiveis.component.html',
@@ -11,9 +9,7 @@ export class TipoRecebiveisComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
   
-  constructor(
-    // protected ref: NbDialogRef<TipoRecebiveisComponent>
-  ) {}
+  constructor() {}
   
   ngOnInit(): void {
     this.source.load(this.data);
@@ -65,9 +61,5 @@ export class TipoRecebiveisComponent implements OnInit {
         with: '10%'
       }      
     }
-  }
-
-  fechar(){
-    // this.ref.close();
   }
 }

@@ -29,7 +29,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Novo',
         icon: 'plus',
-        link: '/pages/dividendos-modulo/novo-dividendo'
+        link: '/pages/dividendos-modulo/novo-dividendo'        
       },
       {
         title: 'Tipo Dividendos',

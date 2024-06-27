@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbWindowService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { TipoRecebiveisComponent } from '../tipo-recebiveis/tipo-recebiveis.component';
+import { PopupComponent } from '../../popup/popup/popup.component';
 
 @Component({
   selector: 'ngx-recebiveis',
@@ -12,7 +13,7 @@ export class RecebiveisComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private dialogService: NbDialogService) {}
+  constructor(private windowService: NbWindowService) {}
 
   ngOnInit(): void {
     this.source.load(this.data);
@@ -67,10 +68,19 @@ export class RecebiveisComponent implements OnInit {
   }
 
   addTipoRecebiveis() {
-    this.dialogService.open(TipoRecebiveisComponent, {
-      context: {
-        // title: 'This is a title passed to the dialog component',
+    // this.dialogService.open(PopupComponent, {
+    //   context: {
+    //     // title: 'This is a title passed to the dialog component',
+    //   },
+    // });
+
+    this.windowService.open(PopupComponent,
+      { 
+        title: 'Teste', 
+        context: { 
+          text: 'Dividendos' 
+        } 
       },
-    });
+    );
   }
 }

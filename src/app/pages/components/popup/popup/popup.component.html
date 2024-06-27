@@ -1,0 +1,11 @@
+<nb-card>
+    <nb-card-body>
+        <ngx-tipo-dividendos *ngIf="tipoDados === 'Dividendo'"></ngx-tipo-dividendos>
+        <ngx-tipo-recebiveis *ngIf="tipoDados === 'Recebiveis'"></ngx-tipo-recebiveis>
+    </nb-card-body>
+     <nb-card-footer>
+        <div class="d-flex justify-content-end">
+            <button nbButton hero status="danger" (click)="fechar()">Fechar</button>
+        </div>
+    </nb-card-footer>
+</nb-card>

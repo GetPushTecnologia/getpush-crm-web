@@ -16,9 +16,6 @@ const components = [
 @NgModule({
   imports: [
     CommonModule,
-    // ThemeModule,
-    // NbCardModule,
-    // Ng2SmartTableModule,
     DividendosModuloRoutingModule,
     SharedModule
   ],
