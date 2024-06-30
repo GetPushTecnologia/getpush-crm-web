@@ -20,10 +20,21 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { NbLoginComponent } from './@theme/components/auth/login/login.component';
+import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
+import { environment } from '../environments/environment';
 
+const API_URL = environment.apiUrl;
+
+const formSetting: any = {
+  redirectDelay: 0,
+  showMessages: {
+    success: true,
+  },
+};
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NbLoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -40,6 +51,54 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    NbAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({ 
+          name: 'email',
+          baseEndpoint: 'http://example.com/api/auth/',
+          login: {
+            endpoint: 'login',
+            method: 'post',
+          },
+          register: {
+            endpoint: 'register',
+            method: 'post',
+          },
+          token: {
+            class: NbAuthJWTToken,
+            key: 'token', // this parameter tells where to look for the token
+          },
+        })
+      ],
+      // providers: {
+      //   email: {
+      //     // service: NbEmailPassAuthProvider,
+      //     config: {
+      //       baseEndpoint: API_URL,
+      //       login: {
+      //         endpoint: '/auth/sign-in',
+      //         method: 'post',
+      //       },
+      //       logout: {
+      //         endpoint: '/auth/sign-out',
+      //         method: 'post',
+      //       },
+      //       token: {
+      //         key: 'token',
+      //       },
+      //     },
+      //   },
+      // },
+      forms: {
+        login: formSetting,
+        register: formSetting,
+        requestPassword: formSetting,
+        resetPassword: formSetting,
+        logout: {
+          redirectDelay: 0,
+        },
+      },
+    }),
   ],
   bootstrap: [AppComponent],
 })

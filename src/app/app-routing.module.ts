@@ -2,12 +2,13 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {
   NbAuthComponent,
-  NbLoginComponent,
+  // NbLoginComponent,
   NbLogoutComponent,
   NbRegisterComponent,
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { NbLoginComponent } from './@theme/components/auth/login/login.component';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,8 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: NbLoginComponent,
+        redirectTo: 'login',
+        pathMatch: 'prefix'
       },
       {
         path: 'login',
@@ -45,8 +47,8 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages/fluxo-caixa/fluxo-caixa-painel', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages/fluxo-caixa/fluxo-caixa-painel' },
+  { path: '', redirectTo: 'pages', pathMatch: 'full', data: { shouldReuse: false } },
+  { path: '**', redirectTo: 'pages', data: { shouldReuse: false } },
 ];
 
 const config: ExtraOptions = {
