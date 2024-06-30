@@ -25,13 +25,13 @@ export class GraficoLinhaComponent implements OnInit {
       labels: ['10', '20', '50', '60', '70', '80', '90', '100' ],
       datasets: [{
         data: [65, 59, 80, 81, 56, 55, 40],
-        label: 'A Pagar',
+        label: 'Contas Pagas',
         // backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 0.3),
         backgroundColor: 'rgba(255, 0, 0, 0.1)',
         borderColor: '#FF6347'
         }, {
           data: [28, 48, 40, 19, 86, 27, 90],
-          label: 'A Receber',
+          label: 'Valor Recebido',
           // backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
           backgroundColor: 'rgba(0, 255, 0, 0.1)',
           borderColor: '#3CB371'

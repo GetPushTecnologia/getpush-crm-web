@@ -12,9 +12,9 @@ export class FluxoCaixaPainelComponent {
   min: Date;
   max: Date;
 
-  valorAPagar: number = 1400.00;
-  valorAReceber: number = 3400.00;
-  total: number = this.valorAReceber - this.valorAPagar;
+  valorPago: number = 1400.00;
+  valorRecebido: number = 3400.00;
+  total: number = this.valorPago - this.valorRecebido;
 
   aPagar: string = "R$ 1.400,00";
   aReceber: string = "R$ 3.400,00";  

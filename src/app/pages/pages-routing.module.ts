@@ -29,46 +29,56 @@ const routes: Routes = [{
     //     .then(m => m.LayoutModule),
     // },
 
-    {
-        path: 'modal-overlays',
-        loadChildren: () => import('./modal-overlays/modal-overlays.module')
-          .then(m => m.ModalOverlaysModule),
-    },
-    {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule)
-    },
-    {
-      path: 'cliente',
-      loadChildren: () => import('./cliente/cliente.module')
-        .then(m => m.ClienteModule)
-    },
-    {    
-      path: 'estoque',
-      loadChildren: () => import('./estoque/estoque.module')
-        .then(m => m.EstoqueModule)
-    },
-    {
-      path: 'vendas',
-      loadChildren: () => import('./vendas/vendas.module')
-        .then(m => m.VendasModule)  
-    },
+    // {
+    //     path: 'modal-overlays',
+    //     loadChildren: () => import('./modal-overlays/modal-overlays.module')
+    //       .then(m => m.ModalOverlaysModule),
+    // },
+    // {
+    //   path: 'charts',
+    //   loadChildren: () => import('./charts/charts.module')
+    //     .then(m => m.ChartsModule)
+    // },
+    // {
+    //   path: 'cliente',
+    //   loadChildren: () => import('./cliente/cliente.module')
+    //     .then(m => m.ClienteModule)
+    // },
+    // {    
+    //   path: 'estoque',
+    //   loadChildren: () => import('./estoque/estoque.module')
+    //     .then(m => m.EstoqueModule)
+    // },
+    // {
+    //   path: 'vendas',
+    //   loadChildren: () => import('./vendas/vendas.module')
+    //     .then(m => m.VendasModule)  
+    // },
     {
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
     },
     {
-      path: 'dividendos-modulo',
-      loadChildren: () => import('./dividendos-modulo/dividendos-modulo.module')
-        .then(m => m.DividendosModuloModule)
+      path: 'contas-pagas',
+      loadChildren: () => import('./contas-pagas/contas-pagas.module')
+        .then(m => m.ContasPagasModule)
     },
     {
-      path: 'recebiveis-modulo',
-      loadChildren: () => import('./recebiveis-modulo/recebiveis-modulo.module')
-        .then(m => m.RecebiveisModuloModule)
+      path: 'valor-recebido',
+      loadChildren: () => import('./valor-recebido/valor-recebido.module')
+        .then(m => m.ValorRecebidoModule)
     },
+    // {
+    //   path: 'dividendos-modulo',
+    //   loadChildren: () => import('./dividendos-modulo/dividendos-modulo.module')
+    //     .then(m => m.DividendosModuloModule)
+    // },
+    // {
+    //   path: 'recebiveis-modulo',
+    //   loadChildren: () => import('./recebiveis-modulo/recebiveis-modulo.module')
+    //     .then(m => m.RecebiveisModuloModule)
+    // },
     // {
     //   path: 'miscellaneous',
     //   loadChildren: () => import('./miscellaneous/miscellaneous.module')

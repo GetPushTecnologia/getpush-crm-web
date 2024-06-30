@@ -6,7 +6,7 @@ import { NbThemeService } from '@nebular/theme';
   templateUrl: './grafico-pizza.component.html',
   styleUrls: ['./grafico-pizza.component.scss']
 })
-export class GraficoPizzaComponent implements AfterViewInit, OnDestroy {
+export class GraficoPizzaComponent implements AfterViewInit {
   options: any = {};
 
   constructor(private theme: NbThemeService) {
@@ -29,7 +29,7 @@ export class GraficoPizzaComponent implements AfterViewInit, OnDestroy {
         legend: {
           orient: 'vertical',
           left: 'left',
-          data: ['A pagar', 'A receber'],
+          data: ['Contas Pagas', 'Valor Recebido'],
           textStyle: {
             // color: echarts.textColor,
           },
@@ -41,8 +41,8 @@ export class GraficoPizzaComponent implements AfterViewInit, OnDestroy {
             radius: '80%',
             center: ['50%', '50%'],
             data: [
-              { value: 335, name: 'A pagar' },
-              { value: 310, name: 'A receber' },
+              { value: 335, name: 'Contas Pagas' },
+              { value: 310, name: 'Valor Recebido' },
               
             ],
             itemStyle: {
@@ -72,7 +72,4 @@ export class GraficoPizzaComponent implements AfterViewInit, OnDestroy {
     // });
   }
 
-  ngOnDestroy(): void {
-    
-  }
 }

@@ -29,11 +29,11 @@
             <div class="col-sm-6">
                 <nb-card>
                     <nb-card-header>
-                        <span class="d-flex justify-content-center">A pagar</span>
+                        <span class="d-flex justify-content-center">Contas Pagas</span>
                     </nb-card-header>
                     <nb-card-body>
                         <div class="d-flex justify-content-center">                    
-                            <h6 class="color-dividento">- {{ formatarMoeda(valorAPagar) }}</h6>
+                            <h6 class="color-dividento">- {{ formatarMoeda(valorPago) }}</h6>
                         </div>                
                     </nb-card-body>
                 </nb-card>
@@ -42,11 +42,11 @@
             <div class="col-sm-6">
                 <nb-card>
                     <nb-card-header>               
-                        <span class="d-flex justify-content-center">A receber</span>                
+                        <span class="d-flex justify-content-center">Valor Recebido</span>                
                     </nb-card-header>
                     <nb-card-body>
                         <div class="d-flex justify-content-center">                   
-                            <h6 class="color-recebiveis"> {{ formatarMoeda(valorAReceber) }} </h6>
+                            <h6 class="color-recebiveis"> {{ formatarMoeda(valorRecebido) }} </h6>
                         </div>
                     </nb-card-body>
                 </nb-card>
@@ -79,19 +79,20 @@
 
 <nb-flip-card>
     <nb-card-front>
-      <nb-card>
-        <nb-card-body>
-          <div class="row">
-            <div class="col-sm-6">
-                <ngx-dividendos></ngx-dividendos>
+        <nb-card>
+            <nb-card-header>Cadastros de Contas</nb-card-header>
+            <nb-card-body>
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- <ngx-cadastrar-contas-pagas></ngx-cadastrar-contas-pagas> -->
+                </div>
+                <div class="col-sm-6">
+                    <!-- <ngx-cadastrar-valor-recebido></ngx-cadastrar-valor-recebido> -->
+                </div>
             </div>
-            <div class="col-sm-6">
-                <ngx-recebiveis></ngx-recebiveis>
-            </div>
-          </div>
-          <br/>
-        </nb-card-body>
-      </nb-card>
+            <br/>
+            </nb-card-body>
+        </nb-card>
     </nb-card-front>
     <nb-card-back>
       <nb-card heigth="500px">

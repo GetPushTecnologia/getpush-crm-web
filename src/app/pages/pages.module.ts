@@ -9,11 +9,6 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { FormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { TipoRecebiveisComponent } from './components/fluxo-caixa/tipo-recebiveis/tipo-recebiveis.component';
-import { TipoDividendosComponent } from './components/fluxo-caixa/tipo-dividendos/tipo-dividendos.component';
-import { RecebiveisComponent } from './components/fluxo-caixa/recebiveis/recebiveis.component';
-import { DividendosComponent } from './components/fluxo-caixa/dividendos/dividendos.component';
-import { PopupComponent } from './components/popup/popup/popup.component';
 
 @NgModule({
   imports: [
@@ -29,7 +24,6 @@ import { PopupComponent } from './components/popup/popup/popup.component';
   ],
   declarations: [
     PagesComponent,
-
   ],
   exports: [ 
     

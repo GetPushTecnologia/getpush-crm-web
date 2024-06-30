@@ -22,38 +22,70 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'pie-chart',
     link: '/pages/fluxo-caixa/fluxo-caixa-painel'
   },
+  // {
+  //   title: 'Dividentos',
+  //   icon: '',
+  //   children: [
+  //     {
+  //       title: 'Novo',
+  //       icon: 'plus',
+  //       link: '/pages/dividendos-modulo/novo-dividendo'        
+  //     },
+  //     {
+  //       title: 'Tipo Dividendos',
+  //       icon: 'plus',
+  //       link: '/pages/dividendos-modulo/novo-tipo-dividendo'
+  //     }
+  //   ]
+  // },
   {
-    title: 'Dividentos',
+    title: 'Contas Pagas',
     icon: '',
     children: [
       {
-        title: 'Novo',
+        title: 'Cadastrar',
         icon: 'plus',
-        link: '/pages/dividendos-modulo/novo-dividendo'        
+        link: '/pages/contas-pagas/cadastrar-contas-pagas'
       },
       {
-        title: 'Tipo Dividendos',
+        title: 'Cadastrar Tipo Conta',
         icon: 'plus',
-        link: '/pages/dividendos-modulo/novo-tipo-dividendo'
+        link: '/pages/contas-pagas/cadastrar-tipo-contas-pagas'
       }
-    ]
+    ]    
   },
   {
-    title: 'Recebiveis',
+    title: 'Valor Recebido',
     icon: '',
     children: [
       {
-        title: 'Novo',
+        title: 'Cadastrar',
         icon: 'plus',
-        link: '/pages/recebiveis-modulo/novo-recebiveis'
+        link: '/pages/valor-recebido/cadastrar-valor-recebido'
       },
       {
-        title: 'Tipo Recebiveis',
+        title: 'Cadastrar Tipo Valor',
         icon: 'plus',
-        link: '/pages/recebiveis-modulo/novo-tipo-recebiveis'
+        link: '/pages/valor-recebido/cadastrar-tipo-valor-recebido'
       }
-    ]
-  }
+    ]    
+  },
+  // {
+  //   title: 'Recebiveis',
+  //   icon: '',
+  //   children: [
+  //     {
+  //       title: 'Novo',
+  //       icon: 'plus',
+  //       link: '/pages/recebiveis-modulo/novo-recebiveis'
+  //     },
+  //     {
+  //       title: 'Tipo Recebiveis',
+  //       icon: 'plus',
+  //       link: '/pages/recebiveis-modulo/novo-tipo-recebiveis'
+  //     }
+  //   ]
+  // }
   // {
   //   title: 'Fazer venda',
   //   icon: 'shopping-cart-outline',
