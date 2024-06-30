@@ -54,11 +54,11 @@ const routes: Routes = [{
     //   loadChildren: () => import('./vendas/vendas.module')
     //     .then(m => m.VendasModule)  
     // },
-    {
-      path: 'forms',
-      loadChildren: () => import('./forms/forms.module')
-        .then(m => m.FormsModule),
-    },
+    // {
+    //   path: 'forms',
+    //   loadChildren: () => import('./forms/forms.module')
+    //     .then(m => m.FormsModule),
+    // },
     {
       path: 'contas-pagas',
       loadChildren: () => import('./contas-pagas/contas-pagas.module')
@@ -69,16 +69,7 @@ const routes: Routes = [{
       loadChildren: () => import('./valor-recebido/valor-recebido.module')
         .then(m => m.ValorRecebidoModule)
     },
-    // {
-    //   path: 'dividendos-modulo',
-    //   loadChildren: () => import('./dividendos-modulo/dividendos-modulo.module')
-    //     .then(m => m.DividendosModuloModule)
-    // },
-    // {
-    //   path: 'recebiveis-modulo',
-    //   loadChildren: () => import('./recebiveis-modulo/recebiveis-modulo.module')
-    //     .then(m => m.RecebiveisModuloModule)
-    // },
+   
     // {
     //   path: 'miscellaneous',
     //   loadChildren: () => import('./miscellaneous/miscellaneous.module')

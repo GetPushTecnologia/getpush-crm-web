@@ -27,7 +27,7 @@ const components = [
     ...components
   ],
   exports: [
-    ...components
+    CadastrarContasPagasComponent
   ]
 })
 export class ContasPagasModule { }

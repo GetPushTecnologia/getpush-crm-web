@@ -15,18 +15,13 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
-    DashboardModule,
-    ECommerceModule,
-    MiscellaneousModule,
     FormsModule,
-    NbCardModule,
-    Ng2SmartTableModule,
   ],
   declarations: [
     PagesComponent,
   ],
   exports: [ 
-    
+    PagesComponent
   ]
 })
 export class PagesModule {

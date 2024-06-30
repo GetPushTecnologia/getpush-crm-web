@@ -21,14 +21,14 @@ const components = [
     CommonModule,
     SharedModule,
     ValorRecebidoRoutingModule,
-    ValorRecebidoModule
   ],
   declarations: [
     ...routedComponents,
     ...components
+
   ],
-  // exports: [
-  //   ...components
-  // ]
+  exports: [
+    CadastrarValorRecebidoComponent
+  ]
 })
 export class ValorRecebidoModule { }

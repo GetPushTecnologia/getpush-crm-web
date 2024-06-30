@@ -6,6 +6,7 @@ import { GraficoLinhaComponent } from '../components/graficos/grafico-linha/graf
 import { GraficoPizzaComponent } from '../components/graficos/grafico-pizza/grafico-pizza.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ContasPagasModule } from '../contas-pagas/contas-pagas.module';
+import { ValorRecebidoModule } from '../valor-recebido/valor-recebido.module';
 
 const components = [
   GraficoLinhaComponent,
@@ -17,7 +18,8 @@ const components = [
     FluxoCaixaRoutingModule,
     FormsModule,
     SharedModule,
-    ContasPagasModule
+    ContasPagasModule,
+    ValorRecebidoModule
   ],
   declarations: [
     ...routedComponents,
