@@ -3,15 +3,16 @@ import { NgModule } from '@angular/core';
 import {
   NbAuthComponent,
   // NbLoginComponent,
-  NbLogoutComponent,
+  // NbLogoutComponent,
   NbRegisterComponent,
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
 import { NgxLoginComponent } from './@theme/components/auth/login/login.component';
+import { NgxLogoutComponent } from './@theme/components/auth/logout/logout/logout.component';
 
 export const routes: Routes = [
-  
+
   {
     path: 'auth',
     component: NbAuthComponent,
@@ -30,7 +31,7 @@ export const routes: Routes = [
       },
       {
         path: 'logout',
-        component: NbLogoutComponent,
+        component: NgxLogoutComponent,
       },
       {
         path: 'request-password',

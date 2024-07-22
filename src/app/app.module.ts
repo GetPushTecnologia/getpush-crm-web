@@ -26,6 +26,7 @@ import { NgxLoginComponent } from './@theme/components/auth/login/login.componen
 import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { NgxLogoutComponent } from './@theme/components/auth/logout/logout/logout.component';
 
 const API_URL = environment.apiUrl;
 
@@ -37,7 +38,7 @@ const formSetting: any = {
 };
 
 @NgModule({
-  declarations: [AppComponent, NgxLoginComponent],
+  declarations: [AppComponent, NgxLoginComponent, NgxLogoutComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -59,26 +60,31 @@ const formSetting: any = {
     ThemeModule.forRoot(),
     NbAuthModule.forRoot({
       strategies: [
-        NbPasswordAuthStrategy.setup({ 
+        NbPasswordAuthStrategy.setup({
           name: 'email',
           baseEndpoint: API_URL,
           login: {
             endpoint: 'auth/sing-in',
              method: 'post',
              redirect: {
-              success: '/pages/',
+              success: 'pages',
               failure: null, // stay on the same page
             },
           },
-          // register: {
-          //   endpoint: 'register',
-          //   method: 'post',
-          // },
+          logout: {
+              endpoint: '/auth/sign-out',
+              method: 'post',
+              redirect: {
+                success: 'login',
+                failure: null, // stay on the same page
+              },
+            },
           token: {
             class: NbAuthJWTToken,
             key: 'token', // this parameter tells where to look for the token
           },
-        })
+        },
+      )
       ],
       // providers: {
       //   email: {

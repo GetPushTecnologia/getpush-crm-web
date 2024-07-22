@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
-// import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,9 +14,14 @@ const routes: Routes = [{
     //   path: 'dashboard',
     //   component: ECommerceComponent,
     // },
+    // {
+    //   path: 'iot-dashboard',
+    //   component: DashboardComponent,
+    // },
     {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
+      path: '',
+      redirectTo: 'fluxo-caixa',
+      pathMatch: 'full',
     },
     {
       path: 'fluxo-caixa',
@@ -44,7 +49,7 @@ const routes: Routes = [{
     //   loadChildren: () => import('./cliente/cliente.module')
     //     .then(m => m.ClienteModule)
     // },
-    // {    
+    // {
     //   path: 'estoque',
     //   loadChildren: () => import('./estoque/estoque.module')
     //     .then(m => m.EstoqueModule)
@@ -52,7 +57,7 @@ const routes: Routes = [{
     // {
     //   path: 'vendas',
     //   loadChildren: () => import('./vendas/vendas.module')
-    //     .then(m => m.VendasModule)  
+    //     .then(m => m.VendasModule)
     // },
     // {
     //   path: 'forms',
@@ -69,21 +74,17 @@ const routes: Routes = [{
       loadChildren: () => import('./valor-recebido/valor-recebido.module')
         .then(m => m.ValorRecebidoModule)
     },
-   
+
     // {
     //   path: 'miscellaneous',
     //   loadChildren: () => import('./miscellaneous/miscellaneous.module')
     //     .then(m => m.MiscellaneousModule),
     // },
+
     {
-      path: '',
-      redirectTo: 'dashboard',
-      pathMatch: 'full',
+      path: '**',
+      component: NotFoundComponent,
     },
-    // {
-    //   path: '**',
-    //   component: NotFoundComponent,
-    // },
   ],
 }];
 

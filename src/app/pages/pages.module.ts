@@ -20,7 +20,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
   declarations: [
     PagesComponent,
   ],
-  exports: [ 
+  exports: [
     PagesComponent
   ]
 })
