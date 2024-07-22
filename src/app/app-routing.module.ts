@@ -8,26 +8,21 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { NbLoginComponent } from './@theme/components/auth/login/login.component';
+import { NgxLoginComponent } from './@theme/components/auth/login/login.component';
 
 export const routes: Routes = [
-  {
-    path: 'pages',
-    loadChildren: () => import('./pages/pages.module')
-      .then(m => m.PagesModule),
-  },
+  
   {
     path: 'auth',
     component: NbAuthComponent,
     children: [
       {
         path: '',
-        redirectTo: 'login',
-        pathMatch: 'prefix'
+        component: NgxLoginComponent,
       },
       {
         path: 'login',
-        component: NbLoginComponent,
+        component: NgxLoginComponent,
       },
       {
         path: 'register',
@@ -47,8 +42,13 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full', data: { shouldReuse: false } },
-  { path: '**', redirectTo: 'pages', data: { shouldReuse: false } },
+  {
+    path: 'pages',
+    loadChildren: () => import('./pages/pages.module')
+      .then(m => m.PagesModule),
+  },
+  { path: '', redirectTo: 'auth', pathMatch: 'full', data: { shouldReuse: false } },
+  { path: '**', redirectTo: 'auth', data: { shouldReuse: false } },
 ];
 
 const config: ExtraOptions = {

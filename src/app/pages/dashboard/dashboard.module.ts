@@ -37,7 +37,6 @@ import { FormsModule } from '@angular/forms';
     ThemeModule,
     NbCardModule,
     NbUserModule,
-    NbButtonModule,
     NbTabsetModule,
     NbActionsModule,
     NbRadioModule,

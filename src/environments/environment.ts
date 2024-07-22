@@ -10,5 +10,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: ''
+  // apiUrl: 'https://api.getpushtecnologia.com.br/v1/'
+
+  apiUrl: 'http://localhost:5284/v1/'
 };

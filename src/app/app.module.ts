@@ -12,17 +12,20 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
+  NbButtonModule,
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
+  NbInputModule,
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { NbLoginComponent } from './@theme/components/auth/login/login.component';
+import { NgxLoginComponent } from './@theme/components/auth/login/login.component';
 import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
 
 const API_URL = environment.apiUrl;
 
@@ -34,12 +37,15 @@ const formSetting: any = {
 };
 
 @NgModule({
-  declarations: [AppComponent, NbLoginComponent],
+  declarations: [AppComponent, NgxLoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
+    NbButtonModule,
+    NbInputModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -55,15 +61,19 @@ const formSetting: any = {
       strategies: [
         NbPasswordAuthStrategy.setup({ 
           name: 'email',
-          baseEndpoint: 'http://example.com/api/auth/',
+          baseEndpoint: API_URL,
           login: {
-            endpoint: 'login',
-            method: 'post',
+            endpoint: 'auth/sing-in',
+             method: 'post',
+             redirect: {
+              success: '/pages/',
+              failure: null, // stay on the same page
+            },
           },
-          register: {
-            endpoint: 'register',
-            method: 'post',
-          },
+          // register: {
+          //   endpoint: 'register',
+          //   method: 'post',
+          // },
           token: {
             class: NbAuthJWTToken,
             key: 'token', // this parameter tells where to look for the token
@@ -88,15 +98,15 @@ const formSetting: any = {
       //       },
       //     },
       //   },
-      // },
+      //},
       forms: {
-        login: formSetting,
-        register: formSetting,
-        requestPassword: formSetting,
-        resetPassword: formSetting,
-        logout: {
-          redirectDelay: 0,
-        },
+        // login: formSetting,
+        // register: formSetting,
+        // requestPassword: formSetting,
+        // resetPassword: formSetting,
+        // logout: {
+        //   redirectDelay: 0,
+        // },
       },
     }),
   ],
