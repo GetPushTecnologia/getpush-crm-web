@@ -27,9 +27,15 @@ import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/a
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { NgxLogoutComponent } from './@theme/components/auth/logout/logout/logout.component';
+import { AuthGuard } from './auth-guard.service';
 
 const API_URL = environment.apiUrl;
 
+const COMPONENTS = [
+  AppComponent,
+  NgxLoginComponent,
+  NgxLogoutComponent
+]
 const formSetting: any = {
   redirectDelay: 0,
   showMessages: {
@@ -38,7 +44,10 @@ const formSetting: any = {
 };
 
 @NgModule({
-  declarations: [AppComponent, NgxLoginComponent, NgxLogoutComponent],
+  providers: [
+    AuthGuard
+  ],
+  declarations: [COMPONENTS],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -86,6 +95,7 @@ const formSetting: any = {
         },
       )
       ],
+
       // providers: {
       //   email: {
       //     // service: NbEmailPassAuthProvider,
@@ -106,13 +116,13 @@ const formSetting: any = {
       //   },
       //},
       forms: {
-        // login: formSetting,
+          login: formSetting,
         // register: formSetting,
         // requestPassword: formSetting,
         // resetPassword: formSetting,
-        // logout: {
-        //   redirectDelay: 0,
-        // },
+        logout: {
+          redirectDelay: 0,
+        },
       },
     }),
   ],

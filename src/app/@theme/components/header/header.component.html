@@ -21,11 +21,11 @@
     <nb-action>
       <h3></h3><span class="color-recebiveis">R$ 100,00</span>
     </nb-action>
-    
+
     <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
       <nb-user [nbContextMenu]="userMenu"
                [onlyPicture]="userPictureOnly"
-               [name]="user?.name"
+               [name]="user.nome"
                [picture]="user?.picture">
       </nb-user>
     </nb-action>

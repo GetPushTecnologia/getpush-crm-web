@@ -20,7 +20,7 @@ const routes: Routes = [{
     // },
     {
       path: '',
-      redirectTo: 'fluxo-caixa',
+      redirectTo: 'fluxo-caixa/fluxo-caixa-painel',
       pathMatch: 'full',
     },
     {

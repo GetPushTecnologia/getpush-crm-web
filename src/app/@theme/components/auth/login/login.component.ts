@@ -10,11 +10,12 @@ import { NB_AUTH_OPTIONS, NbAuthResult, NbAuthService, NbAuthSocialLink, NbLogin
 
     // redirectDelay: number = 0;
     // showMessages: any = {};
-    // provider: string = '';
+    provider: string = '';
 
     // errors: string[] = [];
     // messages: string[] = [];
     user: any = {};
+    hide = true;
     // submitted: boolean = false;
     // socialLinks: NbAuthSocialLink[] = [];
     // hide = true;
@@ -35,32 +36,32 @@ import { NB_AUTH_OPTIONS, NbAuthResult, NbAuthService, NbAuthSocialLink, NbLogin
     //   }
     // }
 
-    // login(): void {
-    //   this.errors = this.messages = [];
-    //   this.submitted = true;
+   // login(): void {
+      // this.errors = this.messages = [];
+      // this.submitted = true;
 
-    //   this.service.authenticate(this.provider, this.user).subscribe((result: NbAuthResult) => {
-    //     this.submitted = false;
+      // this.service.authenticate(this.provider, this.user).subscribe((result: NbAuthResult) => {
+      //   this.submitted = false;
 
-    //     if (result.isSuccess()) {
-    //       let response = result.getResponse();
-    //       let user = response.body.user;
-    //       this.messages = result.getMessages();
+      //   if (result.isSuccess()) {
+      //     let response = result.getResponse();
+      //     let user = response.body.user;
+      //     this.messages = result.getMessages();
 
-    //       //return this.router.navigateByUrl('auth/cadastrar-senha');
+      //     //return this.router.navigateByUrl('auth/cadastrar-senha');
 
-    //     } else {
-    //       this.errors = result.getErrors();
-    //     }
+      //   } else {
+      //     this.errors = result.getErrors();
+      //   }
 
-    //     const redirect = result.getRedirect();
-    //     if (redirect) {
-    //       setTimeout(() => {
-    //         return this.router.navigateByUrl(redirect);
-    //       }, this.redirectDelay);
-    //     }
-    //   });
-    // }
+      //   const redirect = result.getRedirect();
+      //   if (redirect) {
+      //     setTimeout(() => {
+      //       return this.router.navigateByUrl(redirect);
+      //     }, this.redirectDelay);
+      //   }
+      // });
+    //}
 
     // getConfigValue(key: string): any {
     //   return getDeepFromObject(this.config, key, null);
