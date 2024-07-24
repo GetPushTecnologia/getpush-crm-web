@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   NbButtonModule,
   NbChatModule,
+  NbCheckboxModule,
   NbDatepickerModule,
   NbDialogModule,
   NbInputModule,
@@ -56,6 +57,7 @@ const formSetting: any = {
     FormsModule,
     NbButtonModule,
     NbInputModule,
+    NbCheckboxModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -73,7 +75,7 @@ const formSetting: any = {
           name: 'email',
           baseEndpoint: API_URL,
           login: {
-            endpoint: 'auth/sing-in',
+            endpoint: '/auth/sing-in',
              method: 'post',
              redirect: {
               success: 'pages',

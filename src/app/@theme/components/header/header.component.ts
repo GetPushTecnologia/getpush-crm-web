@@ -33,14 +33,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       value: 'cosmic',
       name: 'Cosmic',
     },
-    // {
-    //   value: 'corporate',
-    //   name: 'Corporate',
-    // },
     {
-      value: 'orange',
-      name: 'getpush'
-    }
+      value: 'corporate',
+      name: 'Default',
+    },
+    // {
+    //   value: 'orange',
+    //   name: 'getpush'
+    // }
   ];
 
   currentTheme = 'default';
