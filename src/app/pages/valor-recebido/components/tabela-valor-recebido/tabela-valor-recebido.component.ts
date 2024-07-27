@@ -9,8 +9,8 @@ import { LocalDataSource } from 'ng2-smart-table';
   styleUrls: ['./tabela-valor-recebido.component.scss']
 })
 export class TabelaValorRecebidoComponent implements OnInit {
-
   source: LocalDataSource = new LocalDataSource();
+
   constructor(private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
@@ -69,10 +69,10 @@ export class TabelaValorRecebidoComponent implements OnInit {
         title: 'Valor Unitário',
         type: 'number',
         with: '10%'
-      }      
+      }
     }
   }
-  
+
   popupTipoValorRecebido() {
     this.dialogService.open(PopupTipoValorRecebidoComponent, { });
   }

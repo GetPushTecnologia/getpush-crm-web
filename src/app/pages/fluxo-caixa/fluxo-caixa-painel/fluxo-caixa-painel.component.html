@@ -15,12 +15,12 @@
                                 <nb-datepicker #formpicker></nb-datepicker>
                             </div>
                             <div class="col-sm-4">
-                                <button nbButton status="success" fullWidth>
+                                <button nbButton status="primary" fullWidth shape="semi-round">
                                    Filtrar
-                                  </button>
+                                </button>
                             </div>
                         </div>
-                       
+
                     </nb-card-body>
                 </nb-card>
             </div>
@@ -32,27 +32,27 @@
                         <span class="d-flex justify-content-center">Contas Pagas</span>
                     </nb-card-header>
                     <nb-card-body>
-                        <div class="d-flex justify-content-center">                    
+                        <div class="d-flex justify-content-center">
                             <h6 class="color-dividento">- {{ formatarMoeda(valorPago) }}</h6>
-                        </div>                
+                        </div>
                     </nb-card-body>
                 </nb-card>
             </div>
-             
+
             <div class="col-sm-6">
                 <nb-card>
-                    <nb-card-header>               
-                        <span class="d-flex justify-content-center">Valor Recebido</span>                
+                    <nb-card-header>
+                        <span class="d-flex justify-content-center">Valor Recebido</span>
                     </nb-card-header>
                     <nb-card-body>
-                        <div class="d-flex justify-content-center">                   
+                        <div class="d-flex justify-content-center">
                             <h6 class="color-recebiveis"> {{ formatarMoeda(valorRecebido) }} </h6>
                         </div>
                     </nb-card-body>
                 </nb-card>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-12">
                 <nb-card>
@@ -60,7 +60,7 @@
                         <span class="d-flex justify-content-center">Total</span>
                     </nb-card-header>
                     <nb-card-body>
-                        <div class="d-flex justify-content-center">                    
+                        <div class="d-flex justify-content-center">
                             <h6><span [ngClass]="total > 0 ? 'color-recebiveis' : 'color-dividento'" >{{ formatarMoeda(total) }}</span></h6>
                         </div>
                     </nb-card-body>
@@ -73,7 +73,7 @@
             <nb-card-body>
                 <ngx-grafico-pizza></ngx-grafico-pizza>
             </nb-card-body>
-        </nb-card>   
+        </nb-card>
     </div>
 </div>
 
@@ -101,7 +101,7 @@
             <div>
                 <ngx-grafico-linha></ngx-grafico-linha>
                 <br/>
-            </div>          
+            </div>
         </nb-card-body>
       </nb-card>
     </nb-card-back>

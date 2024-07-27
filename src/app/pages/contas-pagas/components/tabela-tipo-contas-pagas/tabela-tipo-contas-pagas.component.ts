@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { NegocioDataTipoContasPagasService } from '../../../../../services/TipoContasPagasController/negocio-data-tipoContasPagas.service';
+import { NbGlobalLogicalPosition, NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-tabela-tipo-contas-pagas',
@@ -8,45 +10,51 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class TabelaTipoContasPagasComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
+  settings: any;
+  logicalPositions = NbGlobalLogicalPosition;
 
-  constructor( ) {}
+  constructor(private negocioService: NegocioDataTipoContasPagasService,
+    private toastrService: NbToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.source.load(this.data);
+    this.carregaSettings();
+    this.carregaDados();
   }
 
-  data = [
-    {
-      descricao: 'Conta Mensal',
-    },
-    {
-      descricao: 'Produto',
-    },
-  ]
-
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      descricao: {
-        title: 'Descrição',
-        type: 'string',
-        with: '16%'
+  carregaSettings() {
+    this.settings = {
+      add: {
+        addButtonContent: '<i class="nb-plus"></i>',
+        createButtonContent: '<i class="nb-checkmark"></i>',
+        cancelButtonContent: '<i class="nb-close"></i>',
+      },
+      edit: {
+        editButtonContent: '<i class="nb-edit"></i>',
+        saveButtonContent: '<i class="nb-checkmark"></i>',
+        cancelButtonContent: '<i class="nb-close"></i>',
+      },
+      delete: {
+        deleteButtonContent: '<i class="nb-trash"></i>',
+        confirmDelete: true,
+      },
+      columns: {
+        descricao: {
+          title: 'Descrição',
+          type: 'string',
+          with: '16%'
+        }
       }
     }
   }
 
- 
+  carregaDados() {
+    this.negocioService.GetTipoContaPaga().subscribe(
+      value => this.source.load(value.data),
+      value => this.toastrService.show('Erro ao carregar tipos de conta', value.error.Message, {
+        status: 'danger',
+        position: this.logicalPositions.BOTTOM_END
+      })
+    )
+  }
 }

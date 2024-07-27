@@ -7,43 +7,52 @@ import { ChartModule } from "angular2-chartjs";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { NgxEchartsModule } from "ngx-echarts";
 import { ChartsModule } from "../pages/charts/charts.module";
+import { DashboardModule } from "../pages/dashboard/dashboard.module";
+import { ECommerceModule } from "../pages/e-commerce/e-commerce.module";
+import { MiscellaneousModule } from "../pages/miscellaneous/miscellaneous.module";
+import { CustomEditorMoedaComponent } from "../pages/components/custom/custom-editor-moeda/custom-editor-moeda.component";
+import { FormsModule } from "@angular/forms";
+
+const COMPONENTS = [
+  CustomEditorMoedaComponent,
+]
+
+const MODULES = [
+  FormsModule,
+  CommonModule,
+  ThemeModule,
+  NbCardModule,
+  Ng2SmartTableModule,
+  NbIconModule,
+  ChartsModule,
+  NgxEchartsModule,
+  NgxChartsModule,
+  NbDatepickerModule,
+  NbInputModule,
+  NbButtonModule,
+  ChartModule,
+  DashboardModule,
+  ECommerceModule,
+  MiscellaneousModule,
+  NgxChartsModule,
+  NbWindowModule,
+
+]
 
 @NgModule({
     declarations: [
-       
+      ...COMPONENTS,
+
     ],
     imports: [
-        CommonModule,
-        ThemeModule,
-        NbCardModule,
-        Ng2SmartTableModule,
-        NbIconModule,
-        ChartsModule,
-        NgxEchartsModule,
-        NgxChartsModule,
-        Ng2SmartTableModule,
-        NbDatepickerModule.forRoot(),
-        NbInputModule,
-        NbButtonModule,
-        NgxEchartsModule,
-        NgxChartsModule,
-        ChartModule,
-        NbWindowModule.forRoot(), 
+       ...MODULES,
+       NbDatepickerModule.forRoot(),
+       NbWindowModule.forRoot(),
+
     ],
     exports: [
-        NbCardModule,
-        Ng2SmartTableModule,
-        NbIconModule,
-        ChartsModule,
-        NgxEchartsModule,
-        NgxChartsModule,
-        Ng2SmartTableModule,
-        NbDatepickerModule,
-        NbInputModule,
-        NbButtonModule,
-        NgxEchartsModule,
-        NgxChartsModule,
-        ChartModule,    
-    ],    
+        ...COMPONENTS,
+        ...MODULES
+    ],
 })
 export class SharedModule {}
