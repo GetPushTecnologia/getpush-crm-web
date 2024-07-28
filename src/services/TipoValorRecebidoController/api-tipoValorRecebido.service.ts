@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators';
 import { RequestTokenService } from '../request-token.service';
+import { TipoValorRecebido } from '../../app/shared/Entities/TipoValorRecebido';
 
 const API_URL = environment.apiUrl;
 
@@ -25,6 +26,33 @@ export class ApiTipoValorRecebidoService {
     const headers = this.requestToken.createAuthorizationHeader();
 
     return this.http.get<any>(`${API_URL}/GetTipoValorRecebido`, { headers })
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  public InsertTipoValorRecebido(tipoValorRecebido: TipoValorRecebido): Observable<any>{
+    const headers = this.requestToken.createAuthorizationHeader();
+
+    return this.http.post<any>(`${API_URL}/InsertTipoValorRecebido`, tipoValorRecebido, { headers })
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  public UpdateTipoValorRecebido(tipoValorRecebido: TipoValorRecebido): Observable<any>{
+    const headers = this.requestToken.createAuthorizationHeader();
+
+    return this.http.put<any>(`${API_URL}/UpdateTipoValorRecebido`, tipoValorRecebido, { headers })
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  public DeleteTipoValorRecebido(tipoValorRecebidoId: string): Observable<any>{
+    const headers = this.requestToken.createAuthorizationHeader();
+
+    return this.http.delete<any>(`${API_URL}/DeleteTipoValorRecebido/${tipoValorRecebidoId}`, { headers })
     .pipe(
       catchError(this.handleError)
     )

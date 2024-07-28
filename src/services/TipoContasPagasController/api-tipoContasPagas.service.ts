@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators';
 import { RequestTokenService } from '../request-token.service';
+import { TipoContaPaga } from '../../app/shared/Entities/TipoContaPaga';
 
 const API_URL = environment.apiUrl;
 
@@ -26,6 +27,33 @@ export class ApiTipoContasPagasService {
     const headers = this.requestToken.createAuthorizationHeader();
 
     return this.http.get<any>(`${API_URL}/GetTipoContaPaga`, { headers })
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  public InsertTipoContaPaga(tipoContasPagas: TipoContaPaga): Observable<any>{
+    const headers = this.requestToken.createAuthorizationHeader();
+
+    return this.http.post<any>(`${API_URL}/InsertTipoContaPaga`, tipoContasPagas, { headers })
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  public UpdateTipoContaPaga(tipoContasPagas: TipoContaPaga): Observable<any>{
+    const headers = this.requestToken.createAuthorizationHeader();
+
+    return this.http.put<any>(`${API_URL}/UpdateTipoContaPaga`, tipoContasPagas, { headers })
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  public DeleteTipoContaPaga(tipoContaPagaId: string): Observable<any>{
+    const headers = this.requestToken.createAuthorizationHeader();
+
+    return this.http.delete<any>(`${API_URL}/DeleteTipoContaPaga/${tipoContaPagaId}`, { headers })
     .pipe(
       catchError(this.handleError)
     )
