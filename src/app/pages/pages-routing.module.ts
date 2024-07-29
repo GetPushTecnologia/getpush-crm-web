@@ -80,7 +80,11 @@ const routes: Routes = [{
     //   loadChildren: () => import('./miscellaneous/miscellaneous.module')
     //     .then(m => m.MiscellaneousModule),
     // },
-
+   {
+      path: 'ui-features',
+      loadChildren: () => import('./ui-features/ui-features.module')
+        .then(m => m.UiFeaturesModule),
+    },
     {
       path: '**',
       component: NotFoundComponent,

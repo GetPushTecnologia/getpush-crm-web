@@ -47,7 +47,9 @@ export class IconsComponent {
       'briefcase', 'bug', 'building', 'bullhorn',
     ],
 
-    fontAwesomeRegular: [ 'chart-bar', 'bell', 'bell-slash', 'bookmark', 'building' ],
+    fontAwesomeRegular: [ 
+      'chart-bar', 'bell', 'bell-slash', 'bookmark', 'building' 
+    ],
   };
 
 }

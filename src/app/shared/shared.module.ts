@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NbButtonModule, NbCardModule, NbDatepickerModule, NbDialogModule, NbIconModule, NbInputModule, NbWindowModule } from "@nebular/theme";
+import { NbButtonModule, NbCardModule, NbDatepickerModule, NbDialogModule, NbIconModule, NbInputModule, NbSelectModule, NbWindowModule } from "@nebular/theme";
 import { Ng2SmartTableModule } from "ng2-smart-table";
 import { ThemeModule } from "../@theme/theme.module";
 import { ChartModule } from "angular2-chartjs";
@@ -12,9 +12,12 @@ import { ECommerceModule } from "../pages/e-commerce/e-commerce.module";
 import { MiscellaneousModule } from "../pages/miscellaneous/miscellaneous.module";
 import { CustomEditorMoedaComponent } from "../pages/components/custom/custom-editor-moeda/custom-editor-moeda.component";
 import { FormsModule } from "@angular/forms";
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CustomEditorTipoContaPagaComponent } from "../pages/components/custom/custom-editor-tipo-conta-paga/custom-editor-tipo-conta-paga.component";
 
 const COMPONENTS = [
   CustomEditorMoedaComponent,
+  CustomEditorTipoContaPagaComponent
 ]
 
 const MODULES = [
@@ -36,7 +39,8 @@ const MODULES = [
   MiscellaneousModule,
   NgxChartsModule,
   NbWindowModule,
-
+  CurrencyMaskModule,
+  NbSelectModule
 ]
 
 @NgModule({

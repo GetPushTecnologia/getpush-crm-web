@@ -4,3 +4,4 @@
   class="form-control"
   [(ngModel)]="cell.newValue"
   [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"> -->
+  <input type="text" currencyMask [(ngModel)]="cell.newValue" />

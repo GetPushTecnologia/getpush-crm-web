@@ -40,7 +40,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // },
   {
     title: 'Contas Pagas',
-    icon: '',
+    icon: 'file-remove',
     children: [
       {
         title: 'Cadastrar',
@@ -56,7 +56,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Valor Recebido',
-    icon: '',
+    icon: 'file-add',
     children: [
       {
         title: 'Cadastrar',
@@ -183,7 +183,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  
+  {
+      title: 'UI Features',
+      icon: 'keypad-outline',
+      link: '/pages/ui-features',
+      children: [
+        {
+          title: 'Grid',
+          link: '/pages/ui-features/grid',
+        },
+        {
+          title: 'Icons',
+          link: '/pages/ui-features/icons',
+        },
+        {
+          title: 'Typography',
+          link: '/pages/ui-features/typography',
+        },
+        {
+          title: 'Animated Searches',
+          link: '/pages/ui-features/search-fields',
+        },
+      ],
+    },
   {
     title: 'Auth',
     icon: 'lock-outline',

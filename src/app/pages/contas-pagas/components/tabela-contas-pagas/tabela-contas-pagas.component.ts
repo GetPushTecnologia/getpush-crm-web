@@ -3,23 +3,33 @@ import { NbDialogService, NbGlobalLogicalPosition, NbToastrService } from '@nebu
 import { LocalDataSource } from 'ng2-smart-table';
 import { PopupTipoContasPagasComponent } from '../popup-tipo-contas-pagas/popup-tipo-contas-pagas.component';
 import { NegocioDataContasPagasService } from '../../../../../services/ContasPagasController/negocio-data-contasPagas.service';
+import { CustomEditorMoedaComponent } from '../../../components/custom/custom-editor-moeda/custom-editor-moeda.component';
+import Utils from '../../../../shared/Utils';
+import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-pipes/currency-format-pipe.component';
 
 @Component({
   selector: 'ngx-tabela-contas-pagas',
   templateUrl: './tabela-contas-pagas.component.html',
-  styleUrls: ['./tabela-contas-pagas.component.scss']
+  styleUrls: ['./tabela-contas-pagas.component.scss'],
+  providers: [CurrencyFormatPipeComponent]
 })
 export class TabelaContasPagasComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
   settings: any;
   logicalPositions = NbGlobalLogicalPosition;
 
+  private utils: Utils;
+
   constructor(private dialogService: NbDialogService,
     private negocioService: NegocioDataContasPagasService,
-    private toastrService: NbToastrService
+    private toastrService: NbToastrService,
+    private currencyPipe: CurrencyFormatPipeComponent
   ){}
-
+  
   ngOnInit(): void {
+
+    this.utils = new Utils(this.currencyPipe);
+
     this.carregaSettings();
     this.carregaDados();
   }
@@ -52,14 +62,25 @@ export class TabelaContasPagasComponent implements OnInit {
 
         },
         valor: {
-          title: 'Valor Pago',
-          type: 'number',
-          with: '10%'
-        }
+          title: 'Preço',
+          type: 'html',
+          filter: true,
+          editor: {
+            type: 'custom',
+            component: CustomEditorMoedaComponent,
+          },
+          valuePrepareFunction: (value) => {
+            return this.utils.transformCurrency(value, 'R$', '1.2-2');
+          },
+          filterFunction: (value, search) => {
+            let match = this.utils.transformCurrency(value, 'R$', '1.2-2').indexOf(search) > -1
+            if (match || search === '') { return true; }
+            else { return false; }
+          }
+        },
       }
     }
   }
-
 
   carregaDados() {
     this.negocioService.GetContasPagas().subscribe(
