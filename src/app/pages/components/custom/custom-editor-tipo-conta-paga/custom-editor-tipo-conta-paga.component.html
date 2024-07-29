@@ -1,9 +1,6 @@
-<p>custom-editor-tipo-conta-paga works!</p>
-
-<!-- 
-<ng-select 
-    class="form-control"
-    style="min-width: 180px;"
-    [options]="myOptions"
-    [(ngModel)]="cell.newValue">
-  </ng-select> -->
+ <nb-select id="selectSexo" placeholder="Tipo Conta" fullWidth
+    [(selected)]="cell.newValue" >
+    <nb-option *ngFor="let option of myOptions" [value]="option.value">
+      {{ option.label }}
+    </nb-option>
+</nb-select>

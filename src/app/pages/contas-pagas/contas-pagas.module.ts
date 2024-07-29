@@ -13,10 +13,10 @@ const components = [
   CadastrarTipoContasPagasComponent,
   TabelaContasPagasComponent,
   TabelaTipoContasPagasComponent,
-  PopupTipoContasPagasComponent
+  PopupTipoContasPagasComponent,
 ]
 
-@NgModule({ 
+@NgModule({
   imports: [
     CommonModule,
     ContasPagasRoutingModule,

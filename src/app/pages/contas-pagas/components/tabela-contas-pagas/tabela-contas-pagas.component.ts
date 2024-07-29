@@ -6,6 +6,7 @@ import { NegocioDataContasPagasService } from '../../../../../services/ContasPag
 import { CustomEditorMoedaComponent } from '../../../components/custom/custom-editor-moeda/custom-editor-moeda.component';
 import Utils from '../../../../shared/Utils';
 import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-pipes/currency-format-pipe.component';
+import { CustomEditorTipoContaPagaComponent } from '../../../components/custom/custom-editor-tipo-conta-paga/custom-editor-tipo-conta-paga.component';
 
 @Component({
   selector: 'ngx-tabela-contas-pagas',
@@ -25,7 +26,7 @@ export class TabelaContasPagasComponent implements OnInit {
     private toastrService: NbToastrService,
     private currencyPipe: CurrencyFormatPipeComponent
   ){}
-  
+
   ngOnInit(): void {
 
     this.utils = new Utils(this.currencyPipe);
@@ -56,10 +57,17 @@ export class TabelaContasPagasComponent implements OnInit {
           type: 'string',
           with: '16%'
         },
-        tipoConta: {
+        code: {
           title: 'Tipo Conta',
-          type: 'string',
-
+          type: 'html',
+          renderComponent: CustomEditorTipoContaPagaComponent,
+          editor: {
+            type: 'custom',
+            component: CustomEditorTipoContaPagaComponent
+          },
+          valuePrepareFunction: (cell, row) => {
+            return row.tipoContaPaga ? row.tipoContaPaga.descricao.toString() : '';
+          }
         },
         valor: {
           title: 'Preço',

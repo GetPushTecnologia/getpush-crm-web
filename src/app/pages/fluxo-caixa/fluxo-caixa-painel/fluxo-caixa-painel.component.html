@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <nb-card>
                     <nb-card-header>
                         <span class="d-flex justify-content-center">Contas Pagas</span>
@@ -41,7 +41,7 @@
                 </nb-card>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <nb-card>
                     <nb-card-header>
                         <span class="d-flex justify-content-center">Valor Recebido</span>
@@ -53,21 +53,23 @@
                     </nb-card-body>
                 </nb-card>
             </div>
+
+            <div class="col-sm-4">
+              <nb-card>
+                  <nb-card-header>
+                      <span class="d-flex justify-content-center">Total</span>
+                  </nb-card-header>
+                  <nb-card-body>
+                      <div class="d-flex justify-content-center">
+                          <h6><span [ngClass]="total > 0 ? 'color-recebiveis' : 'color-dividento'" >{{ formatarMoeda(total) }}</span></h6>
+                      </div>
+                  </nb-card-body>
+              </nb-card>
+          </div>
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
-                <nb-card>
-                    <nb-card-header>
-                        <span class="d-flex justify-content-center">Total</span>
-                    </nb-card-header>
-                    <nb-card-body>
-                        <div class="d-flex justify-content-center">
-                            <h6><span [ngClass]="total > 0 ? 'color-recebiveis' : 'color-dividento'" >{{ formatarMoeda(total) }}</span></h6>
-                        </div>
-                    </nb-card-body>
-                </nb-card>
-            </div>
+
         </div>
     </div>
     <div class="col-sm-6">

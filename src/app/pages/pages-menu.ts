@@ -29,7 +29,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     {
   //       title: 'Novo',
   //       icon: 'plus',
-  //       link: '/pages/dividendos-modulo/novo-dividendo'        
+  //       link: '/pages/dividendos-modulo/novo-dividendo'
   //     },
   //     {
   //       title: 'Tipo Dividendos',
@@ -52,7 +52,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'plus',
         link: '/pages/contas-pagas/cadastrar-tipo-contas-pagas'
       }
-    ]    
+    ]
   },
   {
     title: 'Valor Recebido',
@@ -68,7 +68,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'plus',
         link: '/pages/valor-recebido/cadastrar-tipo-valor-recebido'
       }
-    ]    
+    ]
   },
   // {
   //   title: 'Recebiveis',
@@ -102,7 +102,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     {
   //       title: 'Novo Cliente',
   //       icon: 'plus',
-  //       link: '/pages/cliente/cliente-novo'
+  //       link: '/pages/cliente/cliente-formulario'
   //     }
   //   ]
   // },
@@ -116,7 +116,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //       link: '/pages/estoque/estoque-cadastro'
   //     }
   //   ]
-  // },  
+  // },
   // {
   //   title: 'Forms',
   //   icon: 'edit-2-outline',
