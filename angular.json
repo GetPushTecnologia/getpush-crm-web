@@ -85,6 +85,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "localhost": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.localhost.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": ""
@@ -97,6 +105,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ngx-admin-demo:build:production"
+            },
+            "localhost": {
+              "browserTarget": "ngx-admin-demo:build:localhost"
             }
           }
         },

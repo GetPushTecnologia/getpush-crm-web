@@ -50,7 +50,11 @@ export class TabelaTipoValorRecebidoComponent implements OnInit {
   carregaDados() {
     this.negocioService.GetTipoValorRecebido().subscribe(
       value => this.source.load(value.data),
-      value => this.toastrService.show('Erro ao carregar tipos de conta', value.error.Message, { status: 'danger', position: this.logicalPositions.BOTTOM_END })
+      value => {
+        this.toastrService.show('Erro ao carregar tipos de conta', value.error.Message, {
+          status: 'danger', position: this.logicalPositions.BOTTOM_END
+        })
+      }
     )
   }
 }

@@ -1,22 +1,23 @@
 <nb-card>
+  <nb-card-header>
+    <nb-card status="danger">
+      <nb-card-header>
+          <div class="d-flex justify-content-center">
+              <span>Contas Pagas</span>
+          </div>
+      </nb-card-header>
+  </nb-card>
+  </nb-card-header>
     <nb-card-body>
-        <nb-card>
-            <nb-card-header>
-                <div class="d-flex justify-content-center">
-                    <span>Contas Pagas</span>
-                </div>
-            </nb-card-header>
-        </nb-card>
-        
         <div class="d-flex justify-content-end">
             <button nbButton status="primary" ghost (click)="popupTipoContasPagas()" shape="semi-round">
-                + Tipo Conta    
+                + Tipo Conta
             </button>
         </div>
-        
+
         <ng2-smart-table [settings]="settings" [source]="source">
-        </ng2-smart-table> 
-        
+        </ng2-smart-table>
+
     </nb-card-body>
 </nb-card>
 

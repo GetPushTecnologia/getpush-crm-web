@@ -2,7 +2,7 @@
     <div class="col-sm-6">
         <div class="row">
             <div class="col-sm-12">
-                <nb-card>
+                <nb-card status="warning">
                     <nb-card-header>Filtros</nb-card-header>
                     <nb-card-body>
                         <div class="row">
@@ -29,7 +29,7 @@
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <nb-card>
+                <nb-card status="danger">
                     <nb-card-header>
                         <span class="d-flex justify-content-center">Contas Pagas</span>
                     </nb-card-header>
@@ -42,7 +42,7 @@
             </div>
 
             <div class="col-sm-4">
-                <nb-card>
+                <nb-card status="primary">
                     <nb-card-header>
                         <span class="d-flex justify-content-center">Valor Recebido</span>
                     </nb-card-header>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="col-sm-4">
-              <nb-card>
+              <nb-card status="success">
                   <nb-card-header>
                       <span class="d-flex justify-content-center">Total</span>
                   </nb-card-header>
@@ -86,12 +86,11 @@
         <nb-card>
             <nb-card-header>Cadastros de Contas</nb-card-header>
             <nb-card-body>
-            <div class="row">
+            <div class="row" style="background-color: bisque;">
                 <div class="col-sm-6">
                     <ngx-cadastrar-contas-pagas></ngx-cadastrar-contas-pagas>
                 </div>
                 <div class="col-sm-6">
-                    <!-- <ngx-cadastrar-valor-recebido></ngx-cadastrar-valor-recebido> -->
                      <ngx-cadastrar-valor-recebido></ngx-cadastrar-valor-recebido>
                 </div>
             </div>

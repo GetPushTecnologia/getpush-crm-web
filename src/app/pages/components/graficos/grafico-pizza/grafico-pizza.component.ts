@@ -11,7 +11,7 @@ export class GraficoPizzaComponent implements AfterViewInit {
 
   constructor(private theme: NbThemeService) {
   }
-  
+
   ngAfterViewInit() {
     // this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
@@ -20,8 +20,9 @@ export class GraficoPizzaComponent implements AfterViewInit {
 
       this.options = {
         // backgroundColor: echarts.bg,
-        color: ['#FF6347', '#3CB371'],
-        
+        // color: ['#FF6347', '#3CB371'],
+        color: ['#dc3545','#007bff'],
+
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)',
@@ -43,7 +44,7 @@ export class GraficoPizzaComponent implements AfterViewInit {
             data: [
               { value: 335, name: 'Contas Pagas' },
               { value: 310, name: 'Valor Recebido' },
-              
+
             ],
             itemStyle: {
               emphasis: {

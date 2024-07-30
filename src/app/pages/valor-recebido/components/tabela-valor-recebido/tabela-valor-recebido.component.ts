@@ -1,44 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbGlobalLogicalPosition, NbToastrService } from '@nebular/theme';
 import { PopupTipoValorRecebidoComponent } from '../popup-tipo-valor-recebido/popup-tipo-valor-recebido.component';
 import { LocalDataSource } from 'ng2-smart-table';
+import { NegocioDataValorRecebidoService } from '../../../../../services/ValorRecebidoController/negocio-data-valorRecebido.service';
+import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-pipes/currency-format-pipe.component';
+import { DatePipe } from '@angular/common';
+import Utils from '../../../../shared/Utils';
 
 @Component({
   selector: 'ngx-tabela-valor-recebido',
   templateUrl: './tabela-valor-recebido.component.html',
-  styleUrls: ['./tabela-valor-recebido.component.scss']
+  styleUrls: ['./tabela-valor-recebido.component.scss'],
+  providers: [CurrencyFormatPipeComponent]
 })
 export class TabelaValorRecebidoComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
+  logicalPositions = NbGlobalLogicalPosition;
 
-  constructor(private dialogService: NbDialogService) {}
+  private utils: Utils;
 
-  ngOnInit(): void {
-    this.source.load(this.data);
+  constructor(private dialogService: NbDialogService,
+    private negocioService: NegocioDataValorRecebidoService,
+    private toastrService: NbToastrService,
+    private currencyPipe: CurrencyFormatPipeComponent,
+    private datePipe: DatePipe
+  ) {
+    this.utils = new Utils(this.currencyPipe, this.datePipe);
   }
 
-  data = [
-    {
-      descricao: 'Pipoca',
-      tipoValorRecebido: 'Venda',
-      valorRecebido: 'R$ 18,00'
-    },
-    {
-      descricao: 'Imprestimo',
-      tipoValorRecebido: 'Credito',
-      valorRecebido: 'R$ 50.000,00'
-    },
-    {
-      descricao: 'Cesta de cafe',
-      tipoValorRecebido: 'Venda',
-      valorRecebido: 'R$ 150,00'
-    },
-    {
-      descricao: 'Pipoca',
-      tipoValorRecebido: 'Venda',
-      valorRecebido: 'R$ 18,00'
-    },
-  ]
+  ngOnInit(): void {
+
+    this.carregaDados();
+  }
 
   settings = {
     add: {
@@ -69,11 +62,38 @@ export class TabelaValorRecebidoComponent implements OnInit {
         title: 'Valor Unitário',
         type: 'number',
         with: '10%'
+      },
+      data_recebimento : {
+        title: 'Data Recebimento',
+          type: 'html',
+          editor: {
+            type: 'custom',
+          },
+          width: '12%',
+          valuePrepareFunction: (value) => {
+            return value != "0001-01-01T00:00:00" ? this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss') : "";
+          },
+          filterFunction: (value, search) => {
+            let match = this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss').indexOf(search) > -1
+            return (match || search === '') ? true :  false;
+          }
       }
     }
   }
 
   popupTipoValorRecebido() {
     this.dialogService.open(PopupTipoValorRecebidoComponent, { });
+  }
+
+  carregaDados() {
+    this.negocioService.GetValorRecebido().subscribe(
+      value => this.source.load(value.data),
+      value => {
+        this.toastrService.show('Erro ao carregar valor recebido', value.error.Message, {
+          status: 'danger',
+          position: this.logicalPositions.BOTTOM_END
+        })
+      }
+    )
   }
 }

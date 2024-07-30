@@ -7,6 +7,7 @@ import { CustomEditorMoedaComponent } from '../../../components/custom/custom-ed
 import Utils from '../../../../shared/Utils';
 import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-pipes/currency-format-pipe.component';
 import { CustomEditorTipoContaPagaComponent } from '../../../components/custom/custom-editor-tipo-conta-paga/custom-editor-tipo-conta-paga.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'ngx-tabela-contas-pagas',
@@ -24,13 +25,13 @@ export class TabelaContasPagasComponent implements OnInit {
   constructor(private dialogService: NbDialogService,
     private negocioService: NegocioDataContasPagasService,
     private toastrService: NbToastrService,
-    private currencyPipe: CurrencyFormatPipeComponent
-  ){}
+    private currencyPipe: CurrencyFormatPipeComponent,
+    private datePipe: DatePipe
+  ){
+    this.utils = new Utils(this.currencyPipe, this.datePipe);
+  }
 
   ngOnInit(): void {
-
-    this.utils = new Utils(this.currencyPipe);
-
     this.carregaSettings();
     this.carregaDados();
   }
@@ -86,6 +87,21 @@ export class TabelaContasPagasComponent implements OnInit {
             else { return false; }
           }
         },
+        data_pagamento : {
+          title: 'Data Pagamento',
+            type: 'html',
+            editor: {
+              type: 'custom',
+            },
+            width: '12%',
+            valuePrepareFunction: (value) => {
+              return value != "0001-01-01T00:00:00" ? this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss') : "";
+            },
+            filterFunction: (value, search) => {
+              let match = this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss').indexOf(search) > -1
+              return (match || search === '') ? true :  false;
+            }
+        }
       }
     }
   }
