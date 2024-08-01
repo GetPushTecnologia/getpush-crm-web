@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { NegocioDataTipoContasPagasService } from '../../../../../services/TipoContasPagasController/negocio-data-tipoContasPagas.service';
+import { NegocioDataTipoContasPagasService } from '../../../../../services/TipoContaPagaController/negocio-data-tipoContaPaga.service';
 import { NbGlobalLogicalPosition, NbToastrService } from '@nebular/theme';
 
 @Component({

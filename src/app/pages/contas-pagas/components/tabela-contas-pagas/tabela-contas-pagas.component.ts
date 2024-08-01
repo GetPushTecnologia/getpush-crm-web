@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NbDialogService, NbGlobalLogicalPosition, NbToastrService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { PopupTipoContasPagasComponent } from '../popup-tipo-contas-pagas/popup-tipo-contas-pagas.component';
-import { NegocioDataContasPagasService } from '../../../../../services/ContasPagasController/negocio-data-contasPagas.service';
+import { NegocioDataContaPagaService } from '../../../../../services/ContaPagaController/negocio-data-contaPaga.service';
 import { CustomEditorMoedaComponent } from '../../../components/custom/custom-editor-moeda/custom-editor-moeda.component';
 import Utils from '../../../../shared/Utils';
 import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-pipes/currency-format-pipe.component';
@@ -23,7 +23,7 @@ export class TabelaContasPagasComponent implements OnInit {
   private utils: Utils;
 
   constructor(private dialogService: NbDialogService,
-    private negocioService: NegocioDataContasPagasService,
+    private negocioService: NegocioDataContaPagaService,
     private toastrService: NbToastrService,
     private currencyPipe: CurrencyFormatPipeComponent,
     private datePipe: DatePipe
@@ -107,7 +107,7 @@ export class TabelaContasPagasComponent implements OnInit {
   }
 
   carregaDados() {
-    this.negocioService.GetContasPagas().subscribe(
+    this.negocioService.GetContaPaga().subscribe(
       value => this.source.load(value.data),
       value => this.toastrService.show('Erro ao carregar contas pagas', value.error.Message, {
         status: 'danger',

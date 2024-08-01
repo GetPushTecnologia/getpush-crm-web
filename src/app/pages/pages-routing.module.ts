@@ -22,11 +22,13 @@ const routes: Routes = [{
       path: '',
       redirectTo: 'fluxo-caixa/fluxo-caixa-painel',
       pathMatch: 'full',
+      data: { shouldReuse: false }
     },
     {
       path: 'fluxo-caixa',
       loadChildren: () => import('./fluxo-caixa/fluxo-caixa.module')
-        .then(m => m.FluxoCaixaModule)
+        .then(m => m.FluxoCaixaModule),
+        data: { shouldReuse: false }
     },
     // {
     //   path: 'layout',
@@ -67,12 +69,14 @@ const routes: Routes = [{
     {
       path: 'contas-pagas',
       loadChildren: () => import('./contas-pagas/contas-pagas.module')
-        .then(m => m.ContasPagasModule)
+        .then(m => m.ContasPagasModule),
+        data: { shouldReuse: false }
     },
     {
       path: 'valor-recebido',
       loadChildren: () => import('./valor-recebido/valor-recebido.module')
-        .then(m => m.ValorRecebidoModule)
+        .then(m => m.ValorRecebidoModule),
+        data: { shouldReuse: false }
     },
 
     // {
@@ -84,11 +88,12 @@ const routes: Routes = [{
       path: 'ui-features',
       loadChildren: () => import('./ui-features/ui-features.module')
         .then(m => m.UiFeaturesModule),
+        data: { shouldReuse: false }
     },
-    {
-      path: '**',
-      component: NotFoundComponent,
-    },
+    // {
+    //   path: '**',
+    //   component: NotFoundComponent,
+    // },
   ],
 }];
 

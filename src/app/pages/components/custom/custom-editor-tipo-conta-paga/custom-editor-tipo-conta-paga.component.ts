@@ -2,7 +2,7 @@ import { TipoContaPaga } from './../../../../shared/Entities/TipoContaPaga';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DefaultEditor } from 'ng2-smart-table';
 import { IOption } from '../../../../shared/interface/IOption.model';
-import { NegocioDataTipoContasPagasService } from '../../../../../services/TipoContasPagasController/negocio-data-tipoContasPagas.service';
+import { NegocioDataTipoContasPagasService } from '../../../../../services/TipoContaPagaController/negocio-data-tipoContaPaga.service';
 import { NbGlobalLogicalPosition, NbToastrService } from '@nebular/theme';
 
 @Component({

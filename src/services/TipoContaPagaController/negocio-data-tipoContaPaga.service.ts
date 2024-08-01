@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ApiTipoContasPagasService } from "./api-tipoContasPagas.service";
+import { ApiTipoContaPagaService } from "./api-tipoContaPaga.service";
 import { Observable } from "rxjs";
 import { TipoContaPaga } from "../../app/shared/Entities/TipoContaPaga";
 
@@ -8,7 +8,7 @@ import { TipoContaPaga } from "../../app/shared/Entities/TipoContaPaga";
 })
 export class NegocioDataTipoContasPagasService {
 
-  constructor(private api: ApiTipoContasPagasService) { }
+  constructor(private api: ApiTipoContaPagaService) { }
 
   public GetTipoContaPaga(): Observable<any>{
     return this.api.GetTipoContaPaga();

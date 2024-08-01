@@ -1,6 +1,6 @@
 import { TipoContaPaga } from "./TipoContaPaga";
 
-export class ContasPagas {
+export class ContaPaga {
   id: string;
   descricao: string;
   tipoContaPaga: TipoContaPaga;

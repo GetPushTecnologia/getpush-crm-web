@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators';
 import { RequestTokenService } from '../request-token.service';
-import { ContasPagas } from '../../app/shared/Entities/ContasPagas';
+import { TipoContaPaga } from '../../app/shared/Entities/TipoContaPaga';
 
 const API_URL = environment.apiUrl;
 
@@ -12,7 +12,7 @@ const API_URL = environment.apiUrl;
   providedIn: 'root'
 })
 
-export class ApiContasPagasService {
+export class ApiTipoContaPagaService {
 
   constructor(private http: HttpClient,
     private requestToken: RequestTokenService
@@ -23,37 +23,37 @@ export class ApiContasPagasService {
     return throwError(error);
   }
 
-  public GetContasPagas(): Observable<any>{
+  public GetTipoContaPaga(): Observable<any>{
     const headers = this.requestToken.createAuthorizationHeader();
 
-    return this.http.get<any>(`${API_URL}/GetContasPagas`, { headers })
+    return this.http.get<any>(`${API_URL}/GetTipoContaPaga`, { headers })
     .pipe(
       catchError(this.handleError)
     )
   }
 
-  public InsertContasPagas(contasPagas: ContasPagas): Observable<any>{
+  public InsertTipoContaPaga(tipoContasPagas: TipoContaPaga): Observable<any>{
     const headers = this.requestToken.createAuthorizationHeader();
 
-    return this.http.post<any>(`${API_URL}/InsertContasPagas`, contasPagas, { headers })
+    return this.http.post<any>(`${API_URL}/InsertTipoContaPaga`, tipoContasPagas, { headers })
     .pipe(
       catchError(this.handleError)
     )
   }
 
-  public UpdateContasPagas(contasPagas: ContasPagas): Observable<any>{
+  public UpdateTipoContaPaga(tipoContasPagas: TipoContaPaga): Observable<any>{
     const headers = this.requestToken.createAuthorizationHeader();
 
-    return this.http.put<any>(`${API_URL}/UpdateContasPagas`, contasPagas, { headers })
+    return this.http.put<any>(`${API_URL}/UpdateTipoContaPaga`, tipoContasPagas, { headers })
     .pipe(
       catchError(this.handleError)
     )
   }
 
-  public DeleteContasPagas(contaPagaId: string): Observable<any>{
+  public DeleteTipoContaPaga(tipoContaPagaId: string): Observable<any>{
     const headers = this.requestToken.createAuthorizationHeader();
 
-    return this.http.delete<any>(`${API_URL}/DeleteContasPagas/${contaPagaId}`, { headers })
+    return this.http.delete<any>(`${API_URL}/DeleteTipoContaPaga/${tipoContaPagaId}`, { headers })
     .pipe(
       catchError(this.handleError)
     )
