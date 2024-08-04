@@ -49,6 +49,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
+      data: { shouldReuse: false }
   },
   { path: '', redirectTo: 'auth', pathMatch: 'full', data: { shouldReuse: false } },
   { path: '**', redirectTo: 'auth', data: { shouldReuse: false } },
