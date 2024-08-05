@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'ngx-cadastrar-contas-pagas',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastrar-contas-pagas.component.scss']
 })
 export class CadastrarContasPagasComponent {
+  @Output() apptotalContaPagaReturn: EventEmitter<number> = new EventEmitter<number>();
 
+  totalContaPagaReturn(event: any) {
+    this.apptotalContaPagaReturn.emit(event);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NbDialogService, NbGlobalLogicalPosition, NbToastrService } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { PopupTipoContasPagasComponent } from '../popup-tipo-contas-pagas/popup-tipo-contas-pagas.component';
@@ -16,6 +16,8 @@ import { DatePipe } from '@angular/common';
   providers: [CurrencyFormatPipeComponent]
 })
 export class TabelaContasPagasComponent implements OnInit {
+  @Output() totalContaPagaReturn: EventEmitter<number> = new EventEmitter<number>();
+
   source: LocalDataSource = new LocalDataSource();
   settings: any;
   logicalPositions = NbGlobalLogicalPosition;
@@ -70,8 +72,8 @@ export class TabelaContasPagasComponent implements OnInit {
             return row.tipoContaPaga ? row.tipoContaPaga.descricao.toString() : '';
           }
         },
-        valor: {
-          title: 'Preço',
+        valor_pago: {
+          title: 'Valor Pago',
           type: 'html',
           filter: true,
           editor: {
@@ -89,18 +91,18 @@ export class TabelaContasPagasComponent implements OnInit {
         },
         data_pagamento : {
           title: 'Data Pagamento',
-            type: 'html',
-            editor: {
-              type: 'custom',
-            },
-            width: '12%',
-            valuePrepareFunction: (value) => {
-              return value != "0001-01-01T00:00:00" ? this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss') : "";
-            },
-            filterFunction: (value, search) => {
-              let match = this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss').indexOf(search) > -1
-              return (match || search === '') ? true :  false;
-            }
+          type: 'html',
+          editor: {
+          type: 'custom',
+          },
+          width: '12%',
+          valuePrepareFunction: (value) => {
+          return value != "0001-01-01T00:00:00" ? this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss') : "";
+          },
+          filterFunction: (value, search) => {
+            let match = this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss').indexOf(search) > -1
+            return (match || search === '') ? true :  false;
+          }
         }
       }
     }
@@ -108,7 +110,16 @@ export class TabelaContasPagasComponent implements OnInit {
 
   carregaDados() {
     this.negocioService.GetContaPaga().subscribe(
-      value => this.source.load(value.data),
+      value => {
+        this.source.load(value.data);
+
+        let valorTotal: number = 0;
+        value.data.forEach(element => {
+          valorTotal += element.valor_pago;
+        });
+
+        this.totalContaPagaReturn.emit(valorTotal);
+      },
       value => this.toastrService.show('Erro ao carregar contas pagas', value.error.Message, {
         status: 'danger',
         position: this.logicalPositions.BOTTOM_END

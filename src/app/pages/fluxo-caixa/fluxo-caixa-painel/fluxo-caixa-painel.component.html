@@ -35,7 +35,7 @@
                     </nb-card-header>
                     <nb-card-body>
                         <div class="d-flex justify-content-center">
-                            <h6 class="color-dividento">- {{ formatarMoeda(valorPago) }}</h6>
+                            <h6 class="color-dividento">{{ formatarMoeda(valorPago) }}</h6>
                         </div>
                     </nb-card-body>
                 </nb-card>
@@ -67,15 +67,12 @@
               </nb-card>
           </div>
         </div>
-
-        <div class="row">
-
-        </div>
     </div>
     <div class="col-sm-6">
         <nb-card>
             <nb-card-body>
-                <ngx-grafico-pizza></ngx-grafico-pizza>
+                <ngx-grafico-pizza>
+              </ngx-grafico-pizza>
             </nb-card-body>
         </nb-card>
     </div>
@@ -88,10 +85,11 @@
             <nb-card-body>
             <div class="row">
                 <div class="col-sm-6">
-                    <ngx-cadastrar-contas-pagas></ngx-cadastrar-contas-pagas>
+                    <ngx-cadastrar-contas-pagas (apptotalContaPagaReturn)="apptotalContaPagaReturn($event)">
+                    </ngx-cadastrar-contas-pagas>
                 </div>
                 <div class="col-sm-6">
-                     <ngx-cadastrar-valor-recebido></ngx-cadastrar-valor-recebido>
+                     <ngx-cadastrar-valor-recebido (appTotalValorRecebidoReturn)="appTotalValorRecebidoReturn($event)"></ngx-cadastrar-valor-recebido>
                 </div>
             </div>
             <br/>

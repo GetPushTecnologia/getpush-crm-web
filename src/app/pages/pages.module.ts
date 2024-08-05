@@ -4,6 +4,7 @@ import { NbMenuModule } from '@nebular/theme';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { CustomEditorTipoValorRecebidoComponent } from './components/custom/custom-editor-tipo-valor-recebido/custom-editor-tipo-valor-recebido.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   declarations: [
-    PagesComponent    
+    PagesComponent,
+    CustomEditorTipoValorRecebidoComponent    
   ],
   exports: [
     PagesComponent

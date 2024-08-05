@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NbDialogService, NbGlobalLogicalPosition, NbToastrService } from '@nebular/theme';
 import { PopupTipoValorRecebidoComponent } from '../popup-tipo-valor-recebido/popup-tipo-valor-recebido.component';
 import { LocalDataSource } from 'ng2-smart-table';
@@ -6,6 +6,8 @@ import { NegocioDataValorRecebidoService } from '../../../../../services/ValorRe
 import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-pipes/currency-format-pipe.component';
 import { DatePipe } from '@angular/common';
 import Utils from '../../../../shared/Utils';
+import { CustomEditorMoedaComponent } from '../../../components/custom/custom-editor-moeda/custom-editor-moeda.component';
+import { CustomEditorTipoValorRecebidoComponent } from '../../../components/custom/custom-editor-tipo-valor-recebido/custom-editor-tipo-valor-recebido.component';
 
 @Component({
   selector: 'ngx-tabela-valor-recebido',
@@ -14,6 +16,7 @@ import Utils from '../../../../shared/Utils';
   providers: [CurrencyFormatPipeComponent]
 })
 export class TabelaValorRecebidoComponent implements OnInit {
+  @Output() totalValorRecebidoReturn: EventEmitter<number> = new EventEmitter<number>();
   source: LocalDataSource = new LocalDataSource();
   logicalPositions = NbGlobalLogicalPosition;
 
@@ -54,14 +57,34 @@ export class TabelaValorRecebidoComponent implements OnInit {
         type: 'string',
         with: '16%'
       },
-      tipoValorRecebido: {
+      code: {
         title: 'Tipo Valor',
-        type: 'string'
+        type: 'html',
+        renderComponent: CustomEditorTipoValorRecebidoComponent,
+        editor: {
+          type: 'custom',
+          component: CustomEditorTipoValorRecebidoComponent
+        },
+        valuePrepareFunction: (cell, row) => {
+          return row.tipoValorRecebido ? row.tipoValorRecebido.descricao.toString() : '';
+        }
       },
-      valorRecebido: {
-        title: 'Valor Unitário',
-        type: 'number',
-        with: '10%'
+      valor_recebido: {
+        title: 'Valor',
+        type: 'html',
+        filter: true,
+        editor: {
+          type: 'custom',
+          component: CustomEditorMoedaComponent,
+        },
+        valuePrepareFunction: (value) => {
+          return this.utils.transformCurrency(value, 'R$', '1.2-2');
+        },
+        filterFunction: (value, search) => {
+          let match = this.utils.transformCurrency(value, 'R$', '1.2-2').indexOf(search) > -1
+          if (match || search === '') { return true; }
+          else { return false; }
+        }
       },
       data_recebimento : {
         title: 'Data Recebimento',
@@ -87,7 +110,16 @@ export class TabelaValorRecebidoComponent implements OnInit {
 
   carregaDados() {
     this.negocioService.GetValorRecebido().subscribe(
-      value => this.source.load(value.data),
+      value => {
+        this.source.load(value.data);
+
+        let valorTotal: number = 0;
+        value.data.forEach(element => {
+          valorTotal += element.valor_recebido;
+        });
+
+        this.totalValorRecebidoReturn.emit(valorTotal);
+      },
       value => {
         this.toastrService.show('Erro ao carregar valor recebido', value.error.Message, {
           status: 'danger',
