@@ -1,5 +1,7 @@
+import { ValorRecebido } from './../../../../shared/Entities/ValorRecebido';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { NbColorHelper, NbThemeService } from '@nebular/theme';
+import { NbColorHelper, NbGlobalLogicalPosition, NbThemeService, NbToastrService } from '@nebular/theme';
+import { NegocioDataGraficoService } from '../../../../../services/GraficoController/negocio-data-grafico.service';
 
 @Component({
   selector: 'ngx-grafico-linha',
@@ -10,8 +12,10 @@ import { NbColorHelper, NbThemeService } from '@nebular/theme';
 export class GraficoLinhaComponent implements OnInit {
   data: any;
   options: any;
+  logicalPositions = NbGlobalLogicalPosition;
 
-  constructor() { 
+  constructor(private negocioService: NegocioDataGraficoService,
+    private toastrService: NbToastrService) {
     this.carregarDados();
   }
 
@@ -21,57 +25,79 @@ export class GraficoLinhaComponent implements OnInit {
 
    carregarDados() {
 
-    this.data = {
-      labels: ['10', '20', '50', '60', '70', '80', '90', '100' ],
-      datasets: [{
-        data: [65, 59, 80, 81, 56, 55, 40],
-        label: 'Contas Pagas',
-        // backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 0.3),
-        backgroundColor: 'rgba(255, 0, 0, 0.1)',
-        borderColor: '#FF6347'
-        }, {
-          data: [28, 48, 40, 19, 86, 27, 90],
-          label: 'Valor Recebido',
-          // backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
-          backgroundColor: 'rgba(0, 255, 0, 0.1)',
-          borderColor: '#3CB371'
-        },     
-      ],
-    };
+    this.negocioService.GetDadosGraficoLinhaTempo().subscribe(
+      sucesso => {
+        let valorContaPaga: number[] = [];
+        let valorRecebido: number[] = [];
 
-    this.options = {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [
-          {
-            gridLines: {
-              display: true,
-              // color: chartjs.axisLineColor,
+        sucesso.data.contaPaga.forEach(element => {
+          valorContaPaga.push(element.valor_pago);
+        });
+
+        sucesso.data.valorRecebido.forEach(element => {
+          valorRecebido.push(element.valor_recebido);
+        });
+
+
+        this.data = {
+          labels: ['10', '20', '50', '60', '70', '80', '90', '100' ],
+          datasets: [{
+            data: valorContaPaga,
+            label: 'Contas Pagas',
+            // backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 0.3),
+            backgroundColor: 'rgba(255, 0, 0, 0.1)',
+            borderColor: '#FF6347'
+            }, {
+              data: valorRecebido,
+              label: 'Valor Recebido',
+              // backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
+              backgroundColor: 'rgba(0, 255, 0, 0.1)',
+              borderColor: '#3CB371'
             },
-            ticks: {
+          ],
+        };
+
+        this.options = {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [
+              {
+                gridLines: {
+                  display: true,
+                  // color: chartjs.axisLineColor,
+                },
+                ticks: {
+                  // fontColor: chartjs.textColor,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  display: true,
+                  // color: chartjs.axisLineColor,
+                },
+                ticks: {
+                  // fontColor: chartjs.textColor,
+                },
+              },
+            ],
+          },
+          legend: {
+            labels: {
               // fontColor: chartjs.textColor,
             },
           },
-        ],
-        yAxes: [
-          {
-            gridLines: {
-              display: true,
-              // color: chartjs.axisLineColor,
-            },
-            ticks: {
-              // fontColor: chartjs.textColor,
-            },
-          },
-        ],
-      },
-      legend: {
-        labels: {
-          // fontColor: chartjs.textColor,
-        },
-      },
-    };
+        };
 
+      },
+      erro => {
+        this.toastrService.show('Erro ao carregar valor recebido', erro.error.Message, {
+          status: 'danger',
+          position: this.logicalPositions.BOTTOM_END
+        })
+      }
+    );
    }
 }

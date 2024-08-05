@@ -110,18 +110,18 @@ export class TabelaValorRecebidoComponent implements OnInit {
 
   carregaDados() {
     this.negocioService.GetValorRecebido().subscribe(
-      value => {
-        this.source.load(value.data);
+      sucesso => {
+        this.source.load(sucesso.data);
 
         let valorTotal: number = 0;
-        value.data.forEach(element => {
+        sucesso.data.forEach(element => {
           valorTotal += element.valor_recebido;
         });
 
         this.totalValorRecebidoReturn.emit(valorTotal);
       },
-      value => {
-        this.toastrService.show('Erro ao carregar valor recebido', value.error.Message, {
+      erro => {
+        this.toastrService.show('Erro ao carregar valor recebido', erro.error.Message, {
           status: 'danger',
           position: this.logicalPositions.BOTTOM_END
         })

@@ -21,7 +21,7 @@ export class FluxoCaixaPainelComponent implements OnInit {
     this.max = this.dateService.addDay(this.dateService.today(), 5);
   }
   ngOnInit(): void {
-    this.total = this.valorPago - this.valorRecebido;
+    this.total = this.valorRecebido - this.valorPago;
   }
 
   formatarMoeda(valor: number): string {
@@ -33,7 +33,7 @@ export class FluxoCaixaPainelComponent implements OnInit {
 s
   apptotalContaPagaReturn(event: any) {
     this.valorPago = event;
-    this.total = this.valorPago - this.valorRecebido;
+    this.total = this.valorRecebido - this.valorPago;
   }
 
   appTotalValorRecebidoReturn(event: any){
