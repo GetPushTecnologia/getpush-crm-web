@@ -2,21 +2,30 @@ import { ValorRecebido } from './../../../../shared/Entities/ValorRecebido';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { NbColorHelper, NbGlobalLogicalPosition, NbThemeService, NbToastrService } from '@nebular/theme';
 import { NegocioDataGraficoService } from '../../../../../services/GraficoController/negocio-data-grafico.service';
+import Utils from '../../../../shared/Utils';
+import { DatePipe } from '@angular/common';
+import { CurrencyFormatPipeComponent } from '../../custom/custom-pipes/currency-format-pipe.component';
 
 @Component({
   selector: 'ngx-grafico-linha',
   templateUrl: './grafico-linha.component.html',
   styleUrls: ['./grafico-linha.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [CurrencyFormatPipeComponent]
 })
 export class GraficoLinhaComponent implements OnInit {
   data: any;
   options: any;
   logicalPositions = NbGlobalLogicalPosition;
 
+  private utils: Utils;
+
   constructor(private negocioService: NegocioDataGraficoService,
-    private toastrService: NbToastrService) {
+    private toastrService: NbToastrService,
+    private currencyPipe: CurrencyFormatPipeComponent,
+    private datePipe: DatePipe) {
     this.carregarDados();
+    this.utils = new Utils(this.currencyPipe, this.datePipe);
   }
 
    ngOnInit(): void {
@@ -27,33 +36,36 @@ export class GraficoLinhaComponent implements OnInit {
 
     this.negocioService.GetDadosGraficoLinhaTempo().subscribe(
       sucesso => {
-        let valorContaPaga: number[] = [];
+        let dataContaPaga: string[] = [];
+        let contaPagaDia: number[] = [];
         let valorRecebido: number[] = [];
 
         sucesso.data.contaPaga.forEach(element => {
-          valorContaPaga.push(element.valor_pago);
+          dataContaPaga.push(this.utils.transformDate(element.dataPagamento, 'dd/MM/yyyy'));
+          contaPagaDia.push(element.totalContaPaga);
         });
 
-        sucesso.data.valorRecebido.forEach(element => {
-          valorRecebido.push(element.valor_recebido);
-        });
+        // sucesso.data.valorRecebido.forEach(element => {
+        //   valorRecebido.push(element.valor_recebido);
+        // });
 
 
         this.data = {
-          labels: ['10', '20', '50', '60', '70', '80', '90', '100' ],
+          labels: dataContaPaga,
           datasets: [{
-            data: valorContaPaga,
+            data: contaPagaDia,
             label: 'Contas Pagas',
             // backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 0.3),
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             borderColor: '#FF6347'
-            }, {
-              data: valorRecebido,
-              label: 'Valor Recebido',
-              // backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
-              backgroundColor: 'rgba(0, 255, 0, 0.1)',
-              borderColor: '#3CB371'
             },
+            // {
+            //   data: valorRecebido,
+            //   label: 'Valor Recebido',
+            //   // backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
+            //   backgroundColor: 'rgba(0, 255, 0, 0.1)',
+            //   borderColor: '#3CB371'
+            // },
           ],
         };
 
