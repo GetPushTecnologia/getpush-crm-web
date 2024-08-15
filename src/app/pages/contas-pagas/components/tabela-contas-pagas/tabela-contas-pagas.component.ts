@@ -8,6 +8,8 @@ import Utils from '../../../../shared/Utils';
 import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-pipes/currency-format-pipe.component';
 import { CustomEditorTipoContaPagaComponent } from '../../../components/custom/custom-editor-tipo-conta-paga/custom-editor-tipo-conta-paga.component';
 import { DatePipe } from '@angular/common';
+import { ContaPaga } from '../../../../shared/Entities/ContaPaga';
+import { Column } from 'ng2-smart-table/lib/lib/data-set/column';
 
 @Component({
   selector: 'ngx-tabela-contas-pagas',
@@ -44,15 +46,23 @@ export class TabelaContasPagasComponent implements OnInit {
         addButtonContent: '<i class="nb-plus"></i>',
         createButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
+        confirmCreate: true
       },
       edit: {
         editButtonContent: '<i class="nb-edit"></i>',
         saveButtonContent: '<i class="nb-checkmark"></i>',
         cancelButtonContent: '<i class="nb-close"></i>',
+        confirmSave: true
       },
       delete: {
         deleteButtonContent: '<i class="nb-trash"></i>',
         confirmDelete: true,
+      },
+      actions: {
+        ColumnTitle: "",
+        add: true,
+        edit: true,
+        delete: true
       },
       columns: {
         descricao: {
@@ -129,5 +139,43 @@ export class TabelaContasPagasComponent implements OnInit {
 
   popupTipoContasPagas() {
     this.dialogService.open(PopupTipoContasPagasComponent, { });
+  }
+
+  adicionarContaPaga(event: any) {
+    let contaPaga: ContaPaga = new ContaPaga({
+      id: null,
+      descricao: event.newData.descricao,
+      tipoContaPaga: event.newData.code,
+      data_pagamento: new Date(),
+      valor: event.newData.valor_pago
+    });
+
+    // this.negocioService.InsertContaPaga(contaPaga).subscribe(
+    //   value => {
+    //     event.confirm.resolve(event.newData);
+
+    //     this.toastrService.show('Sucesso', 'Conta Adicionada com Sucesso', {
+    //       status: 'sucesso',
+    //       position: this.logicalPositions.BOTTOM_END
+    //     })
+    //   },
+    //   value => this.toastrService.show('Erro ao carregar contas pagas', value.error.Message, {
+    //     status: 'danger',
+    //     position: this.logicalPositions.BOTTOM_END
+    //   })
+    // )
+  }
+
+  editarContaPaga(event: any): void {
+    event.confirm.resolve(event.newData);
+  }
+
+  deletarContaPaga(event: any): void {
+    if (window.confirm('Tem certeza que deseja excluir o Gasto de Terceiro?')) {
+      event.confirm.resolve()
+    } else {
+      event.confirm.reject();
+    }
+
   }
 }

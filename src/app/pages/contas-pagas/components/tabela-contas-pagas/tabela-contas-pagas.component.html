@@ -15,7 +15,10 @@
             </button>
         </div>
 
-        <ng2-smart-table [settings]="settings" [source]="source">
+        <ng2-smart-table [settings]="settings" [source]="source"
+          (createConfirm)="adicionarContaPaga($event)"
+          (editConfirm)="editarContaPaga($event)"
+          (deleteConfirm)="deletarContaPaga($event)">
         </ng2-smart-table>
 
     </nb-card-body>

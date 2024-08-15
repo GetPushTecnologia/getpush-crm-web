@@ -11,4 +11,6 @@ export class CadastrarContasPagasComponent {
   totalContaPagaReturn(event: any) {
     this.apptotalContaPagaReturn.emit(event);
   }
+
+
 }

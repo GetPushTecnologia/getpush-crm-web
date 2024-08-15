@@ -36,22 +36,22 @@ export class GraficoLinhaComponent implements OnInit {
 
     this.negocioService.GetDadosGraficoLinhaTempo().subscribe(
       sucesso => {
-        let dataContaPaga: string[] = [];
+        let data: string[] = [];
         let contaPagaDia: number[] = [];
         let valorRecebido: number[] = [];
 
-        sucesso.data.contaPaga.forEach(element => {
-          dataContaPaga.push(this.utils.transformDate(element.dataPagamento, 'dd/MM/yyyy'));
+        sucesso.data.linhaTempoContaPaga.forEach(element => {
+          data.push(this.utils.transformDate(element.dataPagamento, 'dd/MM/yyyy'));
           contaPagaDia.push(element.totalContaPaga);
         });
 
-        // sucesso.data.valorRecebido.forEach(element => {
-        //   valorRecebido.push(element.valor_recebido);
-        // });
-
+        sucesso.data.linhaTempoValorRecebido.forEach(element => {
+          data.push(this.utils.transformDate(element.dataRecebimento, 'dd/MM/yyyy'));
+          valorRecebido.push(element.totalValorRecebido);
+        });
 
         this.data = {
-          labels: dataContaPaga,
+          labels: data,
           datasets: [{
             data: contaPagaDia,
             label: 'Contas Pagas',
@@ -59,13 +59,13 @@ export class GraficoLinhaComponent implements OnInit {
             backgroundColor: 'rgba(255, 0, 0, 0.1)',
             borderColor: '#FF6347'
             },
-            // {
-            //   data: valorRecebido,
-            //   label: 'Valor Recebido',
-            //   // backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
-            //   backgroundColor: 'rgba(0, 255, 0, 0.1)',
-            //   borderColor: '#3CB371'
-            // },
+            {
+              data: valorRecebido,
+              label: 'Valor Recebido',
+              // backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
+              backgroundColor: 'rgba(0, 255, 0, 0.1)',
+              borderColor: '#3CB371'
+            },
           ],
         };
 
