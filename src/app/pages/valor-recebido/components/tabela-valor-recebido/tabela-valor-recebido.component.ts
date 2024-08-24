@@ -8,6 +8,9 @@ import { DatePipe } from '@angular/common';
 import Utils from '../../../../shared/Utils';
 import { CustomEditorMoedaComponent } from '../../../components/custom/custom-editor-moeda/custom-editor-moeda.component';
 import { CustomEditorTipoValorRecebidoComponent } from '../../../components/custom/custom-editor-tipo-valor-recebido/custom-editor-tipo-valor-recebido.component';
+import { ValorRecebido } from '../../../../shared/Entities/ValorRecebido';
+import { TipoValorRecebido } from '../../../../shared/Entities/TipoValorRecebido';
+import { CustomEditorDateComponent } from '../../../components/custom/custom-editor-date/custom-editor-date.component';
 
 @Component({
   selector: 'ngx-tabela-valor-recebido',
@@ -21,6 +24,7 @@ export class TabelaValorRecebidoComponent implements OnInit {
   logicalPositions = NbGlobalLogicalPosition;
 
   private utils: Utils;
+  totalRegistros: number = 0;
 
   constructor(private dialogService: NbDialogService,
     private negocioService: NegocioDataValorRecebidoService,
@@ -41,15 +45,23 @@ export class TabelaValorRecebidoComponent implements OnInit {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
+    },
+    actions: {
+      ColumnTitle: "",
+      add: true,
+      edit: true,
+      delete: true
     },
     columns: {
       descricao: {
@@ -91,6 +103,23 @@ export class TabelaValorRecebidoComponent implements OnInit {
           type: 'html',
           editor: {
             type: 'custom',
+            component: CustomEditorDateComponent,
+          },
+          width: '12%',
+          valuePrepareFunction: (value) => {
+            return this.utils.transformDate(value, 'dd/MM/yyyy');
+          },
+          filterFunction: (value, search) => {
+            let match = this.utils.transformDate(value, 'dd/MM/yyyy').indexOf(search) > -1
+            if (match || search === '') { return true; }
+            else { return false; }
+          }
+      },
+      data_cadastro: {
+        title: 'Cadastro',
+          type: 'html',
+          editor: {
+            type: 'custom',
           },
           width: '12%',
           valuePrepareFunction: (value) => {
@@ -100,7 +129,7 @@ export class TabelaValorRecebidoComponent implements OnInit {
             let match = this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss').indexOf(search) > -1
             return (match || search === '') ? true :  false;
           }
-      }
+      },
     }
   }
 
@@ -111,7 +140,13 @@ export class TabelaValorRecebidoComponent implements OnInit {
   carregaDados() {
     this.negocioService.GetValorRecebido().subscribe(
       sucesso => {
+
+        sucesso.data.forEach(element => {
+          element.data_recebimento =  this.utils.transformDate(element.data_recebimento, 'yyyy-MM-dd');
+        });
+
         this.source.load(sucesso.data);
+        this.totalRegistros = sucesso.data.length;
 
         let valorTotal: number = 0;
         sucesso.data.forEach(element => {
@@ -128,4 +163,113 @@ export class TabelaValorRecebidoComponent implements OnInit {
       }
     )
   }
+
+  adicionarValorRecebido(event: any) {
+    this.validarDadosValorRecebido(event, true);
+  }
+
+  editarValorRecebido(event: any) {
+    this.validarDadosValorRecebido(event, false);
+  }
+
+  deletarValorRecebido(event: any) {
+    if (window.confirm('Tem certeza que deseja excluir o valor recebido?')) {
+      let valorRecebido: ValorRecebido = new ValorRecebido({
+        id: event.data.id,
+        descricao: '',
+        tipoValorRecebido: new TipoValorRecebido({
+          id: null,
+          code: 0,
+          descricao: ''
+        }),
+        data_recebimento: new Date(),
+        valor: 0
+      });
+
+      this.deletar(valorRecebido, event);
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  validarDadosValorRecebido(event: any, incluir: boolean) {
+    let data = event.newData;
+    let idValorRecebido: string = (data.id !== '' && data.id !== undefined) ? data.id : null;
+
+    let valorRecebido: ValorRecebido = new ValorRecebido({
+      id: idValorRecebido,
+      descricao: data.descricao,
+      tipoValorRecebido: new TipoValorRecebido({
+        id: null,
+        code: 1,
+        descricao: ''
+      }),
+      data_recebimento: data.data_recebimento,
+      valor: data.valor_recebido
+    });
+
+    if (incluir) {
+      this.adicionar(valorRecebido, event);
+    } else {
+      this.atualizar(valorRecebido, event);
+    }
+  }
+
+  adicionar(valorRecebido: ValorRecebido, event: any) {
+    this.negocioService.InsertValorRecebido(valorRecebido).subscribe(() => {
+        this.toastrService.show('Sucesso', "Valor Recebido cadastrado com sucesso", {
+          status: 'primary',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.resolve();
+      }, erro => {
+        this.toastrService.show('Erro', 'Erro ao inserir valor recebido - ' + erro.error.Message, {
+          status: 'danger',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.reject();
+      }
+    )
+  }
+
+  atualizar(valorRecebido: ValorRecebido, event: any)  {
+    this.negocioService.UpdateValorRecebido(valorRecebido).subscribe(() => {
+        this.toastrService.show('Sucesso', "Valor Recebido atualizado com sucesso", {
+          status: 'success',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.resolve();
+      }, erro => {
+        this.toastrService.show('Erro ao atualizar valor recebido', erro.error.Message, {
+          status: 'danger',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.reject();
+      }
+    )
+  }
+
+  deletar(valorRecebido: ValorRecebido, event: any) {
+    this.negocioService.DeleteValorRecebido(valorRecebido.id).subscribe(() => {
+        this.toastrService.show('Sucesso', "Valor Recebido deletado com sucesso", {
+          status: 'success',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.resolve();
+      }, erro => {
+        this.toastrService.show('Erro ao deletar valor recebido', erro.error.Message, {
+          status: 'danger',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.reject();
+      }
+    )
+  }
+
 }

@@ -42,7 +42,7 @@ export class CustomEditorTipoContaPagaComponent extends DefaultEditor implements
       },
       value => this.toastrService.show('Erro ao carregar tipo de conta paga', value.error.Message, {
         status: 'danger',
-        position: this.logicalPositions.BOTTOM_END
+        position: this.logicalPositions.TOP_END
       })
     )
   }

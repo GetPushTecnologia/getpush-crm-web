@@ -15,7 +15,14 @@
             </button>
         </div>
 
-        <ng2-smart-table [settings]="settings" [source]="source">
+        <ng2-smart-table [settings]="settings" [source]="source"
+          (createConfirm)="adicionarValorRecebido($event)"
+          (editConfirm)="editarValorRecebido($event)"
+          (deleteConfirm)="deletarValorRecebido($event)">
         </ng2-smart-table>
+
+        <div class="row mt-3" *ngIf="totalRegistros > 0">
+          <div class="col-sm-12">Total Registros: {{ totalRegistros }} </div>
+        </div>
     </nb-card-body>
 </nb-card>

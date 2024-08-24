@@ -22,7 +22,7 @@ export class CustomEditorTipoValorRecebidoComponent extends DefaultEditor implem
   ngOnInit() {
     this.carregaDados();
     if (!this.cell.newValue) {
-      this.cell.newValue = this.cell.getRow().getData().tipoContaPaga.code.toString();
+      this.cell.newValue = this.cell.getRow().getData().tipoValorRecebido.code.toString();
     }
   }
 
@@ -41,7 +41,7 @@ export class CustomEditorTipoValorRecebidoComponent extends DefaultEditor implem
       },
       value => this.toastrService.show('Erro ao carregar tipo de valor pago', value.error.Message, {
         status: 'danger',
-        position: this.logicalPositions.BOTTOM_END
+        position: this.logicalPositions.TOP_END
       })
     )
   }

@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { CustomEditorTipoValorRecebidoComponent } from './components/custom/custom-editor-tipo-valor-recebido/custom-editor-tipo-valor-recebido.component';
+import { CustomEditorDateComponent } from './components/custom/custom-editor-date/custom-editor-date.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { CustomEditorTipoValorRecebidoComponent } from './components/custom/cust
   ],
   declarations: [
     PagesComponent,
-    CustomEditorTipoValorRecebidoComponent    
+    CustomEditorTipoValorRecebidoComponent,
+    CustomEditorDateComponent    
   ],
   exports: [
     PagesComponent

@@ -1,1 +1,6 @@
-<p>custom-editor-tipo-valor-recebido works!</p>
+<nb-select id="selectTipoValor" placeholder="Tipo Valor" fullWidth
+[(selected)]="cell.newValue" >
+<nb-option *ngFor="let option of myOptions" [value]="option.value">
+  {{ option.label }}
+</nb-option>
+</nb-select>
