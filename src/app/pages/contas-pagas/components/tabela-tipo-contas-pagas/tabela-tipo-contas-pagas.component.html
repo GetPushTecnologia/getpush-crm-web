@@ -9,7 +9,10 @@
   </nb-card>
   </nb-card-header>
     <nb-card-body>
-        <ng2-smart-table [settings]="settings" [source]="source">
+        <ng2-smart-table [settings]="settings" [source]="source"
+          (createConfirm)="adicionarTipoContaPaga($event)"
+          (editConfirm)="editarTipoContaPaga($event)"
+          (deleteConfirm)="deletarTipoContaPaga($event)">
         </ng2-smart-table>
     </nb-card-body>
 

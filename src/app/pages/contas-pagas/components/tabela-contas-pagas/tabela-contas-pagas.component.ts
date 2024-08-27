@@ -9,7 +9,8 @@ import { CurrencyFormatPipeComponent } from '../../../components/custom/custom-p
 import { CustomEditorTipoContaPagaComponent } from '../../../components/custom/custom-editor-tipo-conta-paga/custom-editor-tipo-conta-paga.component';
 import { DatePipe } from '@angular/common';
 import { ContaPaga } from '../../../../shared/Entities/ContaPaga';
-import { Column } from 'ng2-smart-table/lib/lib/data-set/column';
+import { CustomEditorDateComponent } from '../../../components/custom/custom-editor-date/custom-editor-date.component';
+import { TipoContaPaga } from '../../../../shared/Entities/TipoContaPaga';
 
 @Component({
   selector: 'ngx-tabela-contas-pagas',
@@ -103,17 +104,34 @@ export class TabelaContasPagasComponent implements OnInit {
           title: 'Data Pagamento',
           type: 'html',
           editor: {
-          type: 'custom',
+            type: 'custom',
+            component: CustomEditorDateComponent
           },
           width: '12%',
           valuePrepareFunction: (value) => {
-          return value != "0001-01-01T00:00:00" ? this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss') : "";
+            return this.utils.transformDate(value, 'dd/MM/yyyy');
           },
           filterFunction: (value, search) => {
-            let match = this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss').indexOf(search) > -1
-            return (match || search === '') ? true :  false;
+            let match = this.utils.transformDate(value, 'dd/MM/yyyy').indexOf(search) > -1
+            if (match || search === '') { return true; }
+            else { return false; }
           }
-        }
+        },
+        data_cadastro: {
+          title: 'Cadastro',
+            type: 'html',
+            editor: {
+              type: 'custom',
+            },
+            width: '12%',
+            valuePrepareFunction: (value) => {
+              return value != "0001-01-01T00:00:00" ? this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss') : "";
+            },
+            filterFunction: (value, search) => {
+              let match = this.utils.transformDate(value, 'dd/MM/yyyy HH:mm:ss').indexOf(search) > -1
+              return (match || search === '') ? true :  false;
+            }
+        },
       }
     }
   }
@@ -126,6 +144,7 @@ export class TabelaContasPagasComponent implements OnInit {
         let valorTotal: number = 0;
         value.data.forEach(element => {
           valorTotal += element.valor_pago;
+          element.data_pagamento =  this.utils.transformDate(element.data_pagamento, 'yyyy-MM-dd');
         });
 
         this.totalContaPagaReturn.emit(valorTotal);
@@ -142,40 +161,113 @@ export class TabelaContasPagasComponent implements OnInit {
   }
 
   adicionarContaPaga(event: any) {
-    let contaPaga: ContaPaga = new ContaPaga({
-      id: null,
-      descricao: event.newData.descricao,
-      tipoContaPaga: event.newData.code,
-      data_pagamento: new Date(),
-      valor: event.newData.valor_pago
-    });
-
-    // this.negocioService.InsertContaPaga(contaPaga).subscribe(
-    //   value => {
-    //     event.confirm.resolve(event.newData);
-
-    //     this.toastrService.show('Sucesso', 'Conta Adicionada com Sucesso', {
-    //       status: 'sucesso',
-    //       position: this.logicalPositions.BOTTOM_END
-    //     })
-    //   },
-    //   value => this.toastrService.show('Erro ao carregar contas pagas', value.error.Message, {
-    //     status: 'danger',
-    //     position: this.logicalPositions.BOTTOM_END
-    //   })
-    // )
+    this.validarDadosContaPaga(event, true);
   }
 
   editarContaPaga(event: any): void {
-    event.confirm.resolve(event.newData);
+    this.validarDadosContaPaga(event, false);
   }
 
   deletarContaPaga(event: any): void {
-    if (window.confirm('Tem certeza que deseja excluir o Gasto de Terceiro?')) {
-      event.confirm.resolve()
+    if (window.confirm('Tem certeza que deseja excluir o valor recebido?')) {
+      let contaPaga: ContaPaga = new ContaPaga({
+        id: event.data.id,
+        descricao: '',
+        tipoContaPaga: new TipoContaPaga({
+          id: null,
+          code: 0,
+          descricao: ''
+        }),
+        data_pagamento: new Date(),
+        valor: 0
+      });
+
+      this.deletar(contaPaga, event);
     } else {
       event.confirm.reject();
     }
+  }
 
+  validarDadosContaPaga(event: any, incluir: boolean) {
+    let data = event.newData;
+    let idContaPaga: string = (data.id !== '' && data.id != undefined) ? data.id : null;
+
+    let contaPaga: ContaPaga = new ContaPaga({
+      id: idContaPaga,
+      descricao: data.descricao,
+      tipoContaPaga: new TipoContaPaga ({
+        id: null,
+        code: data.code,
+        descricao: ''
+      }),
+      data_pagamento: data.data_pagamento,
+      valor: data.valor_pago
+    });
+
+    if (incluir) {
+      this.adicionar(contaPaga, event);
+    } else {
+      this.atualizar(contaPaga, event);
+    }
+  }
+
+  adicionar(contaPaga: ContaPaga, event: any) {
+    this.negocioService.InsertContaPaga(contaPaga).subscribe(() => {
+      this.toastrService.show('Sucesso', "Conta paga cadastrado com sucesso", {
+        status: 'success',
+        position: this.logicalPositions.TOP_END
+      })
+
+        event.confirm.resolve();
+        this.carregaDados();
+      }, erro => {
+        this.toastrService.show('Erro', 'Erro ao inserir conta paga - ' + erro.error.Message, {
+          status: 'danger',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.reject();
+      }
+    )
+  }
+
+  atualizar(contaPaga: ContaPaga, event: any) {
+    this.negocioService.UpdateContaPaga(contaPaga).subscribe(() => {
+      this.toastrService.show('Sucesso', "Conta paga atualizado com sucesso", {
+        status: 'success',
+        position: this.logicalPositions.TOP_END
+      })
+
+      event.confirm.resolve();
+      this.carregaDados();
+      }, erro => {
+        this.toastrService.show('Erro ao atualizar conta paga', erro.error.Message, {
+          status: 'danger',
+          position: this.logicalPositions.TOP_END
+        })
+
+        event.confirm.reject();
+      }
+    )
+  }
+
+  deletar(contaPaga: ContaPaga, event: any) {
+    this.negocioService.DeleteContaPaga(contaPaga.id).subscribe(() => {
+      this.toastrService.show('Sucesso', "Conta paga deletada com sucesso", {
+        status: 'success',
+        position: this.logicalPositions.TOP_END
+      })
+
+      event.confirm.resolve();
+      this.carregaDados();
+    }, erro => {
+      this.toastrService.show('Erro ao deletar conta paga', erro.error.Message, {
+        status: 'danger',
+        position: this.logicalPositions.TOP_END
+      })
+
+      event.confirm.reject();
+    }
+  )
   }
 }

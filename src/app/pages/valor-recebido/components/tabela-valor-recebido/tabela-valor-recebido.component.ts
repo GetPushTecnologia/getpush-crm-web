@@ -140,17 +140,13 @@ export class TabelaValorRecebidoComponent implements OnInit {
   carregaDados() {
     this.negocioService.GetValorRecebido().subscribe(
       sucesso => {
-
-        sucesso.data.forEach(element => {
-          element.data_recebimento =  this.utils.transformDate(element.data_recebimento, 'yyyy-MM-dd');
-        });
-
         this.source.load(sucesso.data);
         this.totalRegistros = sucesso.data.length;
 
         let valorTotal: number = 0;
         sucesso.data.forEach(element => {
           valorTotal += element.valor_recebido;
+          element.data_recebimento =  this.utils.transformDate(element.data_recebimento, 'yyyy-MM-dd');
         });
 
         this.totalValorRecebidoReturn.emit(valorTotal);
@@ -201,7 +197,7 @@ export class TabelaValorRecebidoComponent implements OnInit {
       descricao: data.descricao,
       tipoValorRecebido: new TipoValorRecebido({
         id: null,
-        code: 1,
+        code: data.code,
         descricao: ''
       }),
       data_recebimento: data.data_recebimento,
@@ -218,11 +214,12 @@ export class TabelaValorRecebidoComponent implements OnInit {
   adicionar(valorRecebido: ValorRecebido, event: any) {
     this.negocioService.InsertValorRecebido(valorRecebido).subscribe(() => {
         this.toastrService.show('Sucesso', "Valor Recebido cadastrado com sucesso", {
-          status: 'primary',
+          status: 'success',
           position: this.logicalPositions.TOP_END
         })
 
         event.confirm.resolve();
+        this.carregaDados();
       }, erro => {
         this.toastrService.show('Erro', 'Erro ao inserir valor recebido - ' + erro.error.Message, {
           status: 'danger',
@@ -242,6 +239,7 @@ export class TabelaValorRecebidoComponent implements OnInit {
         })
 
         event.confirm.resolve();
+        this.carregaDados();
       }, erro => {
         this.toastrService.show('Erro ao atualizar valor recebido', erro.error.Message, {
           status: 'danger',
@@ -261,6 +259,7 @@ export class TabelaValorRecebidoComponent implements OnInit {
         })
 
         event.confirm.resolve();
+        this.carregaDados();
       }, erro => {
         this.toastrService.show('Erro ao deletar valor recebido', erro.error.Message, {
           status: 'danger',
