@@ -12,6 +12,9 @@ export class FluxoCaixaPainelComponent implements OnInit {
   min: Date;
   max: Date;
 
+  dataInicio: Date;
+  dataFim: Date;
+
   valorPago: number;
   valorRecebido: number;
   total: number;
@@ -39,5 +42,9 @@ s
   appTotalValorRecebidoReturn(event: any){
     this.valorRecebido = event;
     this.total = this.valorRecebido - this.valorPago;
+  }
+
+  atualizar() {
+
   }
 }

@@ -79,9 +79,9 @@ export class TabelaTipoValorRecebidoComponent implements OnInit {
   deletarTipoValorRecebido(event: any) {
     if (window.confirm('Tem certeza que deseja excluir o tipo devalor recebido?')) {
       let tipoValorRecebido: TipoValorRecebido = new TipoValorRecebido({
-          id: null,
-          code: 0,
-          descricao: ''
+          id: event.data.id,
+          code: event.data.code,
+          descricao: event.data.descricao
       });
 
       this.deletar(tipoValorRecebido, event);
@@ -91,18 +91,79 @@ export class TabelaTipoValorRecebidoComponent implements OnInit {
   }
 
   validarDadosTipoValorRecebido(event: any, incluir: boolean) {
+    let data = event.newData;
+    let id: string = (data.id !== '' && data.id !== undefined) ? data.id : null;
 
+    let tipoValorRecebido: TipoValorRecebido = new TipoValorRecebido({
+        id: id,
+        code: data.code,
+        descricao: data.descricao
+      });
+
+    if (incluir) {
+      this.adicionar(tipoValorRecebido, event);
+    } else {
+      this.atualizar(tipoValorRecebido, event);
+    }
   }
 
   adicionar(tipoValorRecebido: TipoValorRecebido, event: any) {
+    this.negocioService.InsertTipoValorRecebido(tipoValorRecebido).subscribe(() => {
+      this.toastrService.show('Tipo Valor Recebido cadastrado com sucesso', 'Sucesso', {
+        status: 'success',
+        position: this.logicalPositions.TOP_END
+      })
 
+      event.confirm.resolve();
+      this.carregaDados();
+    }, erro => {
+      this.toastrService.show('Erro', 'Erro ao inserir tipo de valor recebido - ' + erro.error.Message, {
+        status: 'danger',
+        position: this.logicalPositions.TOP_END
+      })
+
+      event.confirm.reject();
+    }
+  )
   }
 
   atualizar(tipoValorRecebido: TipoValorRecebido, event: any) {
+    this.negocioService.UpdateTipoValorRecebido(tipoValorRecebido).subscribe(() => {
+      this.toastrService.show('Tipo Valor Recebido atualizado com sucesso', 'Sucesso', {
+        status: 'success',
+        position: this.logicalPositions.TOP_END
+      })
 
+      event.confirm.resolve();
+      this.carregaDados();
+    }, erro => {
+      this.toastrService.show(erro.error.Message, 'Erro ao atualizar tipo de valor recebido', {
+        status: 'danger',
+        position: this.logicalPositions.TOP_END
+      })
+
+      event.confirm.reject();
+    }
+  )
   }
 
   deletar(tipoValorRecebido: TipoValorRecebido, event: any) {
+    this.negocioService.DeleteTipoValorRecebido(tipoValorRecebido.id).subscribe(() => {
+      this.toastrService.show('Valor Recebido deletado com sucesso', 'Sucesso', {
+        status: 'success',
+        position: this.logicalPositions.TOP_END
+      })
 
+      event.confirm.resolve();
+      this.carregaDados();
+    }, erro => {
+      this.toastrService.show(erro.error.Message, 'Erro ao deletar valor recebido', {
+        status: 'danger',
+        position: this.logicalPositions.TOP_END
+      })
+
+      event.confirm.reject();
+    }
+  )
   }
 }

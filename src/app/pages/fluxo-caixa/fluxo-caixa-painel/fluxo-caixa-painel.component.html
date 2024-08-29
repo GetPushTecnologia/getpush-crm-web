@@ -8,16 +8,16 @@
                         <div class="row">
                             <div class="col-sm-4 form-group mt-2">
                                 <input nbInput placeholder="De" [nbDatepicker]="formpicker" id="selectDateDe" fullWidth
-                                    shape="semi-round">
+                                    shape="semi-round" [(ngModel)]="dataInicio">
                                 <nb-datepicker #formpicker></nb-datepicker>
                             </div>
                             <div class="col-sm-4 form-group mt-2">
                                 <input nbInput placeholder="até" [nbDatepicker]="formpicker" id="fullWidth" fullWidth
-                                shape="semi-round">
+                                  shape="semi-round" [(ngModel)]="dataFim">
                                 <nb-datepicker #formpicker></nb-datepicker>
                             </div>
                             <div class="col-sm-4">
-                                <button nbButton status="primary" fullWidth shape="semi-round">
+                                <button nbButton status="primary" fullWidth shape="semi-round" (click)="atualizar()">
                                    Filtrar
                                 </button>
                             </div>
