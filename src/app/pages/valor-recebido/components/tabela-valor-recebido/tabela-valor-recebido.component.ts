@@ -190,10 +190,10 @@ export class TabelaValorRecebidoComponent implements OnInit {
 
   validarDadosValorRecebido(event: any, incluir: boolean) {
     let data = event.newData;
-    let idValorRecebido: string = (data.id !== '' && data.id !== undefined) ? data.id : null;
+    let valorRecebidoId: string = (data.id !== '' && data.id !== undefined) ? data.id : null;
 
     let valorRecebido: ValorRecebido = new ValorRecebido({
-      id: idValorRecebido,
+      id: valorRecebidoId,
       descricao: data.descricao,
       tipoValorRecebido: new TipoValorRecebido({
         id: null,
