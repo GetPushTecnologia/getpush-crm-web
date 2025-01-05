@@ -1,10 +1,11 @@
-import { Component, Inject } from "@angular/core";
-import { Router } from "@angular/router";
-import { NB_AUTH_OPTIONS, NbAuthResult, NbAuthService, NbAuthSocialLink, NbLoginComponent, getDeepFromObject } from "@nebular/auth";
+import { Component, ViewEncapsulation } from "@angular/core";
+import { NbLoginComponent } from "@nebular/auth";
 
 @Component({
     selector: 'ngx-login',
-    templateUrl: './login.component.html'
+    styleUrls: ['./login.component.scss'],
+    templateUrl: './login.component.html',
+    encapsulation: ViewEncapsulation.None
   })
   export class NgxLoginComponent extends NbLoginComponent {
 
@@ -12,5 +13,9 @@ import { NB_AUTH_OPTIONS, NbAuthResult, NbAuthService, NbAuthSocialLink, NbLogin
 
     user: any = {};
     hide = true;
+
+    onFocus(event: FocusEvent): void {
+      (event.target as HTMLElement).blur(); // Remove o foco do botão
+    }
 
   }
